@@ -1,38 +1,49 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
+
+.logoTxt {
+    display: inline;
+    font-size: 10vh;
+    font-family: 'Caveat', cursive;
+    margin-left: 5vh;
+}
+.loginBtn {
+    display: inline;
+    max-height: 5.4vh;
+    margin-right: 5vh;
+    margin-top: 5vh;
+    border-radius: 3px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header-navigator {
+    display: flex;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.navigator-card {
+    font-size: 4vh;
+    margin: 5vh;
+    cursor: pointer;
 }
-
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    background-color: #282c34;
+    min-height: 13vh;
+    color: white;
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between;
 }
 
-.App-link {
-  color: #61dafb;
+.active-tab {
+    color: #E26B6B;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* a:link{
+    color: white
+}
+
+
+a:active{
+    color: #E26B6B;
+} */
+a:hover {
+    color: #E26B6B;
 }
