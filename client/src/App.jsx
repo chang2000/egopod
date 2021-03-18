@@ -13,33 +13,31 @@ import {
 
 function App() {
 
-  const [apiResponse, SetApiResponse] = useState()
-  useEffect(()=>{
-    callAPI()
-  }, [])
-  const callAPI = () => {
-    fetch("http://localhost:9000/testAPI")
-        .then(res => res.text())
-        .then(res => SetApiResponse(res))
-  }
+  const [userName, setUserName] = useState('')
+  const [isloggedin, setIsloggedin] = useState(false)
 
+  useEffect(()=>{
+    if(userName != '') {
+      setIsloggedin(true)
+    }
+  }, [userName])
 
   const responseGoogle = (response) => {
-    console.log(response);
     axios({
       method: "POST",
-      url: "http://localhost:9000/api/googlelogin",
-
-    }).then(response => {
-      console.log(response)
+      url: "http://localhost:5000/api/googlelogin",
+      data: {tokenId: response.tokenId}
+    }).then(res => {
+      console.log(res.data.userName)
+      setUserName(res.data.userName)
     })
   };
   
-  function Library() {
+  function Library() { // will be written in another componment file
     return <h2>Library</h2>;
   }
   
-  function Explore() {
+  function Explore() {// will be written in another componment file
     return <h2>Explore</h2>;
   }
 
@@ -68,16 +66,20 @@ function App() {
               >Explore</Link>
           </div>
         </div>
+        {
+          isloggedin ? 
+            <div className='header-welcome'>Hi, {userName}</div> // May be we can use something like Morning, Afternoon.. here
+          :
+            <GoogleLogin
+            className="loginBtn"
+            clientId="81834534286-ksipb13ampj692eia95sqaed3r67jeje.apps.googleusercontent.com" // Secret
+            buttonText="Singin with google"
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
+            cookiePolicy={"single_host_origin"}
+          />
+        }
 
-
-        <GoogleLogin
-          className="loginBtn"
-          clientId="81834534286-ksipb13ampj692eia95sqaed3r67jeje.apps.googleusercontent.com" // Secret
-          buttonText="Singin with google"
-          onSuccess={responseGoogle}
-          onFailure={responseGoogle}
-          cookiePolicy={"single_host_origin"}
-        />
       </header>
       <div>
         {/* A <Switch> looks through its children <Route>s and
