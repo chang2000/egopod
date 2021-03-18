@@ -11,7 +11,7 @@ router.post("/", (req, res)=>{
     .then(oauth_res=>{
         const {email_verified, name, email} = oauth_res.payload;
         console.log(oauth_res.payload)
-        res.status(200).json({userName: name})
+        res.status(200).json({userName: name, userEmail: email})
     })
 })
 

@@ -14,7 +14,18 @@ import {
 function App() {
 
   const [userName, setUserName] = useState('')
+  const [userEmail, setUserEmail] = useState('')
   const [isloggedin, setIsloggedin] = useState(false)
+
+  // Check cookie
+  useEffect(()=>{
+    let cookieUserName = getCookie("userName")
+    let cookieUserEmail = getCookie("userEmail")
+    if (cookieUserName !== "" ) {
+      setUserName(cookieUserName)
+      setUserEmail(cookieUserEmail)
+    }
+  }, []) 
 
   useEffect(()=>{
     if(userName != '') {
@@ -22,14 +33,35 @@ function App() {
     }
   }, [userName])
 
+  const getCookie = (cname)=> {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+
   const responseGoogle = (response) => {
     axios({
       method: "POST",
       url: "http://localhost:5000/api/googlelogin",
       data: {tokenId: response.tokenId}
     }).then(res => {
-      console.log(res.data.userName)
       setUserName(res.data.userName)
+      setUserEmail(res.data.userEmail)
+      console.log(res.data.userName)
+      console.log(res.data.userEmail)
+      // Set up Cookie here
+      document.cookie = `userName=${res.data.userName}`
+      document.cookie = `userEmail=${res.data.userEmail}`
     })
   };
   
