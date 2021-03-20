@@ -3,8 +3,24 @@ const path = require('path')
 const moment = require('moment')
 const logger = require('./middleware/logger')
 const cors = require("cors");
-const app = express()
+const mysql = require('mysql')
 
+const db = mysql.createConnection({
+    host: '18.166.67.196',
+    port: '8080',
+    user: 'root',
+    password: 'asdfjkl;',
+    database: 'egopod'
+  })
+
+db.connect((err)=>{
+    if(err) {
+        throw err
+    }
+    console.log("Connected")
+})
+
+const app = express()
 app.use(cors())
 // Init middleware
 // app.use(logger)

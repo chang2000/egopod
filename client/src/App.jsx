@@ -1,5 +1,7 @@
-import './App.css';
-import React, { useState, useEffect} from 'react';
+import './App.css'
+import './index.css'
+import React, { useState, useEffect} from 'react'
+import Explore from "./Explore/Explore"
 import axios from 'axios'
 import GoogleLogin from 'react-google-login'
 
@@ -33,20 +35,28 @@ function App() {
     }
   }, [userName])
 
+  const setCookie = (cname, cvalue, exdays) => {
+    let d = new Date()
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000))
+    let expires = "expires="+d.toUTCString()
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/"
+  }
+
+
   const getCookie = (cname)=> {
-    let name = cname + "=";
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(';');
+    let name = cname + "="
+    let decodedCookie = decodeURIComponent(document.cookie)
+    let ca = decodedCookie.split(';')
     for(let i = 0; i <ca.length; i++) {
-      let c = ca[i];
+      let c = ca[i]
       while (c.charAt(0) === ' ') {
-        c = c.substring(1);
+        c = c.substring(1)
       }
       if (c.indexOf(name) === 0) {
-        return c.substring(name.length, c.length);
+        return c.substring(name.length, c.length)
       }
     }
-    return "";
+    return ""
   }
 
   const responseGoogle = (response) => {
@@ -60,17 +70,13 @@ function App() {
       console.log(res.data.userName)
       console.log(res.data.userEmail)
       // Set up Cookie here
-      document.cookie = `userName=${res.data.userName}`
-      document.cookie = `userEmail=${res.data.userEmail}`
+      setCookie('userName', res.data.userName, 3)
+      setCookie('userEmail', res.data.userEmail, 3)
     })
   };
   
   function Library() { // will be written in another componment file
-    return <h2>Library</h2>;
-  }
-  
-  function Explore() {// will be written in another componment file
-    return <h2>Explore</h2>;
+    return <div className="font-medium text-4xl text-center">Library</div>;
   }
 
 
@@ -100,7 +106,8 @@ function App() {
         </div>
         {
           isloggedin ? 
-            <div className='header-welcome'>Hi, {userName}</div> // May be we can use something like Morning, Afternoon.. here
+            <div className="font-medium text-2xl mr-7 my-12" 
+            >Hi, {userName}</div> // May be we can use something like Morning, Afternoon.. here
           :
             <GoogleLogin
             className="loginBtn"

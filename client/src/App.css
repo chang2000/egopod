@@ -2,23 +2,17 @@
 
 .logoTxt {
     display: inline;
-    font-size: 10vh;
+    font-size: 8vh;
     font-family: 'Caveat', cursive;
     margin-left: 5vh;
 }
+
 .loginBtn {
     display: inline;
     max-height: 5.4vh;
     margin-right: 5vh;
     margin-top: 5vh;
     border-radius: 3px;
-}
-.header-welcome{
-    display: inline;
-    max-height: 5.4vh;
-    margin-right: 5vh;
-    margin-top: 5vh;
-    font-size: 3vh;
 }
 
 .header-navigator {
@@ -27,12 +21,14 @@
 
 .navigator-card {
     font-size: 4vh;
-    margin: 5vh;
+    margin: 4.5vh;
     cursor: pointer;
 }
+
 .App-header {
-    background-color: #282c34;
-    min-height: 13vh;
+    background-color: #2C293A;
+    /* min-height: 9vh; */
+    height: 12vh;
     color: white;
     display: flex;
     flex-direction: row; 
@@ -43,14 +39,6 @@
     color: #E26B6B;
 }
 
-/* a:link{
-    color: white
-}
-
-
-a:active{
-    color: #E26B6B;
-} */
 a:hover {
     color: #E26B6B;
 }
