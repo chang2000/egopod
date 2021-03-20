@@ -106,7 +106,7 @@ function App() {
         </div>
         {
           isloggedin ? 
-            <div className="font-medium text-2xl mr-7 my-12" 
+            <div className="welcome-user" 
             >Hi, {userName}</div> // May be we can use something like Morning, Afternoon.. here
           :
             <GoogleLogin

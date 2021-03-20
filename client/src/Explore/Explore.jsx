@@ -1,7 +1,8 @@
+import './Explore.css'
 import React, { useState, useEffect} from 'react'
-import '../index.css'
 import best from './Best-podcast'
 import {Card} from 'react-bootstrap'
+
 
 const Explore = () =>{
 
@@ -19,27 +20,27 @@ const Explore = () =>{
     }
     setPodlist(reslist)
     },[])
-
         
-    const presen_pod = (name, thumbnail, pub, id)=>{
+    const presen_pod = (name, url, pub, id)=>{
         return (
-        <Card style={{ width: '14rem', margin: '1rem' }}>
-        <Card.Img variant="top" src={thumbnail} />
-        <Card.Body>
-            <Card.Title>{name}</Card.Title>
-            <Card.Text>
+        <div className="card">
+            <img className="card-image"
+                src={url} />
+            <div className="card-title">
+                {name}
+            </div>
+            <div className="card-desc">
                 {pub}
-            </Card.Text>
-        </Card.Body>
-        </Card>
+            </div>
+        </div>
         )
     }
 
     return (
-        <div>
+        <div className="podGallery">
             {
             podlist.map((item, key) =>(
-                <div key={key}>{item}</div>)
+                <div className="outterCard" key={key}>{item}</div>)
             )}
         </div>
     )
