@@ -2,7 +2,6 @@ import './App.css'
 import './index.css'
 import React, { useState, useEffect} from 'react'
 import Explore from "./Explore/Explore"
-import Player from './Player/Player'
 import axios from 'axios'
 import GoogleLogin from 'react-google-login'
 import AudioPlayer from 'react-h5-audio-player'
@@ -21,6 +20,7 @@ function App() {
   const [userName, setUserName] = useState('')
   const [userEmail, setUserEmail] = useState('')
   const [isloggedin, setIsloggedin] = useState(false)
+  const [audioUrl, setAudioUrl] = useState('')
 
   // Check cookie
   useEffect(()=>{
@@ -30,6 +30,7 @@ function App() {
       setUserName(cookieUserName)
       setUserEmail(cookieUserEmail)
     }
+    setAudioUrl("https://hwcdn.libsyn.com/p/9/2/6/926a07b50daa5c9d/2016-11-14-StarWars7x7Show864-Tem12n.mp3?c_id=13325370&cs_id=13325370&destination_id=207880&expiration=1616407535&hwt=6d807c39f78988842b9e4aaa56b04c1a")
   }, []) 
 
   useEffect(()=>{
@@ -89,6 +90,15 @@ function App() {
     return <div className="font-medium text-4xl text-center">Library</div>;
   }
 
+  const downloadFile = () =>{
+  let link = document.createElement("a");
+    link.download = 'audio.mp3';
+    link.href = audioUrl;
+    link.target ='_blank'
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+ } 
 
   return (
     <div className="App">
@@ -156,10 +166,12 @@ function App() {
           </Route>
         </Switch>
       </div>
-        <div className='playing-title'>Star War: Title here</div>
+        <div className='playing-title'>Star War: Title here
+          <button onClick={downloadFile}>Download!</button>
+        </div>
       <AudioPlayer
         className='core-player'
-        src="https://hwcdn.libsyn.com/p/9/2/6/926a07b50daa5c9d/2016-11-14-StarWars7x7Show864-Tem12n.mp3?c_id=13325370&cs_id=13325370&destination_id=207880&expiration=1616407535&hwt=6d807c39f78988842b9e4aaa56b04c1a"
+        src={audioUrl}
         onPlay={e => console.log("onPlay")}
         customAdditionalControls={[]}
       />
