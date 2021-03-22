@@ -61,3 +61,29 @@
   display: block;
   cursor: pointer;
 }
+.playing-title {
+  display: block;
+  position: fixed;
+  z-index: 999;
+  font-size: 1.5rem;
+  font-weight: bold;
+  bottom: 10px;
+  left: 10px;
+}
+
+.core-player {
+  position: fixed;
+  bottom: 0;
+}
+
+/* Change the player style */
+
+.rhap_container { 
+  background-color: #2C293A !important;
+  box-shadow: #fff !important;
+}
+
+.rhap_time {
+  color: white !important;
+}
+

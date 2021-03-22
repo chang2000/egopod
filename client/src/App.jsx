@@ -5,6 +5,8 @@ import Explore from "./Explore/Explore"
 import Player from './Player/Player'
 import axios from 'axios'
 import GoogleLogin from 'react-google-login'
+import AudioPlayer from 'react-h5-audio-player'
+import 'react-h5-audio-player/lib/styles.css'
 
 import {
   BrowserRouter as Router,
@@ -91,7 +93,7 @@ function App() {
   return (
     <div className="App">
     <Router>
-      <header className="App-header sticky">
+      <header className="App-header sticky noselect">
         <div className="logoTxt">EgoPod</div>
           <div className="header-navigator">
           <div
@@ -152,9 +154,13 @@ function App() {
           </Route>
         </Switch>
       </div>
-    <footer>
-      <Player className="sticky-bottom"/>
-    </footer>
+        <div className='playing-title'>Star War: Title here</div>
+      <AudioPlayer
+        className='core-player'
+        src="https://hwcdn.libsyn.com/p/9/2/6/926a07b50daa5c9d/2016-11-14-StarWars7x7Show864-Tem12n.mp3?c_id=13325370&cs_id=13325370&destination_id=207880&expiration=1616407535&hwt=6d807c39f78988842b9e4aaa56b04c1a"
+        onPlay={e => console.log("onPlay")}
+        customAdditionalControls={[]}
+      />
     </Router>
     </div>
   );
