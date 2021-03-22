@@ -21,7 +21,7 @@ function App() {
   const [userEmail, setUserEmail] = useState('')
   const [isloggedin, setIsloggedin] = useState(false)
   const [audioUrl, setAudioUrl] = useState('')
-
+  const [playingTitle, setPlayingTitle] = useState('Star War: default title')
   // Check cookie
   useEffect(()=>{
     let cookieUserName = getCookie("userName")
@@ -166,13 +166,14 @@ function App() {
           </Route>
         </Switch>
       </div>
-        <div className='playing-title'>Star War: Title here
+        <div className='playing-title'>
+          {playingTitle}
           <button onClick={downloadFile}>Download!</button>
         </div>
       <AudioPlayer
         className='core-player'
         src={audioUrl}
-        onPlay={e => console.log("onPlay")}
+        // onPlay={()-}
         customAdditionalControls={[]}
       />
     </Router>
