@@ -101,6 +101,7 @@ function App() {
             id = "library-tab"
           >
             <Link to="/library" 
+              className="navi-section"
               style={{color: 'white', textDecoration: 'none'}} 
                >Library</Link>
           </div>
@@ -110,6 +111,7 @@ function App() {
             id = "explore-tab"
           >
             <Link to="/explore" 
+              className="navi-section"
               style={{color: 'white', textDecoration: 'none'}} 
               >Explore</Link>
           </div>

@@ -43,6 +43,5 @@ app.use('/api/members', require('./routes/api/members'))
 app.use('/api/googlelogin', require('./routes/api/googlelogin'))
 
 
-
 const PORT = process.env.PORT || 5000
 app.listen(PORT, ()=>console.log(`Serevr started on PORT ${PORT}`))

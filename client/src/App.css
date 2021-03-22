@@ -55,11 +55,30 @@
 
 .loggin-dropdown-menu {
   display: none;
+  padding: 10px;
+}
+.loggin-dropdown-menu:hover {
+  color: red;
+  background-color: black !important;
 }
 
 .welcome-user:hover .loggin-dropdown-menu {
   display: block;
   cursor: pointer;
+  animation-name: growDown;
+  animation-duration: 0.25s;
+  background-color: #2C293A;
+}
+@keyframes growDown {
+  0% {
+    transform: scaleY(0)
+  }
+  80% {
+    transform: scaleY(1.1)
+  }
+  100% {
+    transform: scaleY(1)
+  }
 }
 .playing-title {
   display: block;
