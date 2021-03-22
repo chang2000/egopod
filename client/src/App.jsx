@@ -2,6 +2,7 @@ import './App.css'
 import './index.css'
 import React, { useState, useEffect} from 'react'
 import Explore from "./Explore/Explore"
+import Player from './Player/Player'
 import axios from 'axios'
 import GoogleLogin from 'react-google-login'
 
@@ -42,7 +43,6 @@ function App() {
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/"
   }
 
-
   const getCookie = (cname)=> {
     let name = cname + "="
     let decodedCookie = decodeURIComponent(document.cookie)
@@ -75,6 +75,14 @@ function App() {
     })
   };
   
+  const logout = () =>{
+    document.cookie = "userName=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "userEmail=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    setUserName('') 
+    setUserEmail('')
+    setIsloggedin(false)
+  }
+
   function Library() { // will be written in another componment file
     return <div className="font-medium text-4xl text-center">Library</div>;
   }
@@ -83,7 +91,7 @@ function App() {
   return (
     <div className="App">
     <Router>
-      <header className="App-header">
+      <header className="App-header sticky">
         <div className="logoTxt">EgoPod</div>
           <div className="header-navigator">
           <div
@@ -107,7 +115,18 @@ function App() {
         {
           isloggedin ? 
             <div className="welcome-user" 
-            >Hi, {userName}</div> // May be we can use something like Morning, Afternoon.. here
+            >
+              Hi, {userName}
+            <div className="loggin-dropdown-menu">
+              <div className="dropdown-button"
+                onClick={logout}
+              >
+                Sign out
+              </div>
+            </div> 
+            
+            </div> // May be we can use something like Morning, Afternoon.. here
+
           :
             <GoogleLogin
             className="loginBtn"
@@ -121,8 +140,6 @@ function App() {
 
       </header>
       <div>
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/library">
             <Library />
@@ -135,9 +152,10 @@ function App() {
           </Route>
         </Switch>
       </div>
+    <footer>
+      <Player className="sticky-bottom"/>
+    </footer>
     </Router>
-      
-
     </div>
   );
 }
