@@ -1,0 +1,29 @@
+.pod-info-page {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 7rem;
+  justify-content:flex-start;
+  align-items: flex-start;
+}
+
+.info-left-card {
+
+}
+
+.info-left-card-img {
+
+}
+
+.info-left-card-title {
+
+}
+
+.info-left-card-title {
+
+}
+
+.info-podlist {
+  display: flex;
+  flex-direction: column;
+}
