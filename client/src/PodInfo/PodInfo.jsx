@@ -1,7 +1,7 @@
 import './PodInfo.css'
 import React, { useState, useEffect} from 'react'
 import axios from 'axios'
-
+import store from '../store'
 
 
 const PodInfo = (props) =>{
@@ -42,6 +42,15 @@ const PodInfo = (props) =>{
 
   const syncPlayInfo = (e, name, url)=> {
     console.log(name, url)
+    store.dispatch({
+      type: 'updateUrl',
+      payload: url
+    })
+    store.dispatch({
+      type: 'updateName',
+      payload: name
+    })
+    console.log('dispatched')
   }
 
   const episodeBar =(name, url)=>{

@@ -6,6 +6,8 @@ import axios from 'axios'
 import GoogleLogin from 'react-google-login'
 import AudioPlayer from 'react-h5-audio-player'
 import 'react-h5-audio-player/lib/styles.css'
+import {useDispatch} from 'react-redux'
+import store from './store'
 
 import {
   BrowserRouter as Router,
@@ -16,12 +18,13 @@ import {
 
 
 function App() {
-
+  const dispatch = useDispatch();
   const [userName, setUserName] = useState('')
   const [userEmail, setUserEmail] = useState('')
   const [isloggedin, setIsloggedin] = useState(false)
   const [audioUrl, setAudioUrl] = useState('')
-  const [playingTitle, setPlayingTitle] = useState('Star War: default title')
+  const [playingTitle, setPlayingTitle] = useState('Not Playing')
+
   // Check cookie
   useEffect(()=>{
     let cookieUserName = getCookie("userName")
@@ -30,8 +33,9 @@ function App() {
       setUserName(cookieUserName)
       setUserEmail(cookieUserEmail)
     }
-    // setAudioUrl("https://hwcdn.libsyn.com/p/9/2/6/926a07b50daa5c9d/2016-11-14-StarWars7x7Show864-Tem12n.mp3?c_id=13325370&cs_id=13325370&destination_id=207880&expiration=1616407535&hwt=6d807c39f78988842b9e4aaa56b04c1a")
-    // setAudioUrl("https://hwcdn.libsyn.com/p/9/2/6/926a07b50daa5c9d/2016-11-14-StarWars7x7Show864-Tem12n.mp3?c_id=13325370&cs_id=13325370&destination_id=207880&expiration=1616407535&hwt=6d807c39f78988842b9e4aaa56b04c1a")
+
+    store.subscribe(resetPlayingUrl)
+    store.subscribe(resetPlayingName)
   }, []) 
 
   useEffect(()=>{
@@ -39,6 +43,25 @@ function App() {
       setIsloggedin(true)
     }
   }, [userName])
+
+  useEffect(()=>{
+    console.log('Change Playing Url', audioUrl)
+  }, [audioUrl])
+
+  useEffect(()=>{
+    console.log('Change playing title', playingTitle)
+  }, [playingTitle])
+
+  const resetPlayingName = () =>{
+    let name = store.getState().coreStore[0]
+    setPlayingTitle(name)
+  }
+
+  const resetPlayingUrl = () =>{
+    let url = store.getState().coreStore[1]
+    setAudioUrl(url)
+  }
+
 
   const setCookie = (cname, cvalue, exdays) => {
     let d = new Date()
@@ -174,7 +197,6 @@ function App() {
       <AudioPlayer
         className='core-player'
         src={audioUrl}
-        // onPlay={()-}
         customAdditionalControls={[]}
       />
     </Router>

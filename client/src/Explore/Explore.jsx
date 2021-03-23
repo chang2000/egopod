@@ -16,7 +16,6 @@ const Explore = () =>{
   const [podPub, setPodPub] = useState()
   const [podID, setPodID] = useState()
 
-
   useEffect(()=>{
     let bestObj = best
     let reslist = []
