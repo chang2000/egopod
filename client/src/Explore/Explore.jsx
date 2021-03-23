@@ -16,19 +16,8 @@ const Explore = () =>{
   const [podPub, setPodPub] = useState()
   const [podID, setPodID] = useState()
 
-  useEffect(()=>{
-    let bestObj = best
-    let reslist = []
-    // Embed a apple url to it
-    for (let i = 0; i < 10; i ++) {
-      let itunesID = bestObj.data.podcasts[i].itunes_id
-      let name = bestObj.data.podcasts[i].title
-      let url = bestObj.data.podcasts[i].image
-      let pub = bestObj.data.podcasts[i].publisher
-      let id = itunesID
-      reslist.push(presen_pod(name, url, pub, id))
-    }
-    setPodlist(reslist)
+  useEffect(()=>{ 
+    requestSearch('tech')
   },[])
 
   useEffect(()=>{
@@ -71,7 +60,7 @@ const Explore = () =>{
     if (val != '') {
      searchUrl = searchUrl + val
     } else {
-      searchUrl = searchUrl + 'all'
+      searchUrl = searchUrl + 'tech'
     }
     axios.get(searchUrl).then((res)=>{
       let resCount = res.data.resultCount
