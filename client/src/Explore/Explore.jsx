@@ -67,7 +67,12 @@ const Explore = () =>{
   }
 
   const requestSearch = (val) => {
-    let searchUrl = 'https://itunes.apple.com/search?media=podcast&term=' + val
+    let searchUrl = 'https://itunes.apple.com/search?media=podcast&term='
+    if (val != '') {
+     searchUrl = searchUrl + val
+    } else {
+      searchUrl = searchUrl + 'all'
+    }
     axios.get(searchUrl).then((res)=>{
       let resCount = res.data.resultCount
       let tmpList = []
