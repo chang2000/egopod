@@ -5,11 +5,6 @@ import store from '../store'
 
 
 const PodInfo = (props) =>{
-  // const [podCoverUrl, setPodCoverUrl] = useState(props.coverUrl)
-  // const [podTitle, setPodTitle] = useState(props.podTitle)
-  // const [podPub, setPodPub] = useState(props.podPub)
-  // const [podID, setPodID] = useState(props.podID)
-  
   const podCoverUrl = props.coverUrl
   const podTitle = props.podTitle
   const podPub = props.podPub
@@ -60,7 +55,7 @@ const PodInfo = (props) =>{
         {name}
       </div>
       <div className='single-play-bar-other-info'>
-        Other Info
+        {/* Other Info */}
       </div>
 
       <button className='single-play-bar-start-play' 

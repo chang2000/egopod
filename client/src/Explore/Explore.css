@@ -33,3 +33,11 @@
 .card-pub {
   color: grey
 }
+
+.back-btn {
+  padding-top: 5.5rem;
+  padding-left: 2rem;
+  max-height: 2rem;
+  width: 7rem;
+  cursor: pointer;
+}
