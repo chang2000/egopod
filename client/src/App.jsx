@@ -129,8 +129,9 @@ function App() {
   } 
 
   const switchPlayingDetailPanel = () => {
-    console.log('clicked')
-    setShowPlayingPanel(!showPlayingPanel)
+    if (playingTitle !== 'Not Playing') {
+      setShowPlayingPanel(!showPlayingPanel)
+    }
   }
 
   return (
