@@ -2,13 +2,17 @@ import { createStore, combineReducers } from 'redux'
 
 
 const reducer = combineReducers({
-  coreStore: (state = ['oName','oUrl'], action) => {
+  coreStore: (state = ['', '', 0], 
+  action) => {
     let newState = Object.assign([], state);
+    if (action.type === 'updateName') {
+      newState[0] = action.payload
+    }
     if (action.type === 'updateUrl') {
       newState[1] = action.payload
     }
-    if (action.type === 'updateName') {
-      newState[0] = action.payload
+    if (action.type === 'updatePodcastID') {
+      newState[2] = action.payload
     }
     return newState;
   }

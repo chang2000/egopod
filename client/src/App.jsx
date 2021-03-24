@@ -7,7 +7,6 @@ import axios from 'axios'
 import GoogleLogin from 'react-google-login'
 import AudioPlayer from 'react-h5-audio-player'
 import 'react-h5-audio-player/lib/styles.css'
-import {useDispatch} from 'react-redux'
 import store from './store'
 
 import {
@@ -19,7 +18,6 @@ import {
 
 
 function App() {
-  const dispatch = useDispatch();
   const [userName, setUserName] = useState('')
   const [userEmail, setUserEmail] = useState('')
   const [isloggedin, setIsloggedin] = useState(false)

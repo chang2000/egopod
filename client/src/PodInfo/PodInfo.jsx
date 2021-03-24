@@ -15,7 +15,7 @@ const PodInfo = (props) =>{
 
   useEffect(()=>{
     // Fetch the episodes list
-    let itunesLink = `https://itunes.apple.com/lookup?id=${podID}&country=US&media=podcast&entity=podcastEpisode`
+    let itunesLink = `https://itunes.apple.com/lookup?id=${podID}&media=podcast&entity=podcastEpisode`
     // Query
     axios.get(itunesLink).then(res=>{
       let tmpNames = []
@@ -36,7 +36,7 @@ const PodInfo = (props) =>{
   }, [epListNames, epListUrls])
 
   const syncPlayInfo = (e, name, url)=> {
-    console.log(name, url)
+    console.log(name, url,podID)
     store.dispatch({
       type: 'updateUrl',
       payload: url
@@ -44,6 +44,10 @@ const PodInfo = (props) =>{
     store.dispatch({
       type: 'updateName',
       payload: name
+    })
+    store.dispatch({
+      type: 'updatePodcastID',
+      payload: podID
     })
     console.log('dispatched')
   }
