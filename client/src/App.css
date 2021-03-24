@@ -89,11 +89,15 @@
   bottom: 10px;
   left: 10px;
   max-width: 400px;
+  cursor: pointer;
 }
+
+
 
 .core-player {
   position: fixed;
   bottom: 0;
+  padding-right: 17px !important;
 }
 
 /* Change the player style */

@@ -8,40 +8,27 @@ body {
   background-color: #1B1717;
   color: white;
 }
-
-/* .scroller {
-  width: 300px;
-  height: 100px;
-  overflow-y: scroll;
-  scrollbar-color: rebeccapurple green;
-} */
-
-
-/* ::-webkit-scrollbar {
-    width: 5px;
-    height: 8px;
-    background-color: #fff;
-  }
-   
-::-webkit-scrollbar-track {
-  background-color: #fff;
+html {
+  overflow-y: overlay;
 }
-   
-::-webkit-scrollbar-thumb {
-  background-color: #ACB1BF;
-  border-radius: 4px;
-} */
-
-::-webkit-scrollbar-track{
-  -webkit-box-shadow: inset 0 0 6px black;
-  background-color: #fff;
+::-webkit-scrollbar {
+  width: .5rem;
+  height: .5rem;
+  background: hsla(0, 0%, 100%, 0.6);
 }
-.noselect {
-  -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome, Edge, Opera and Firefox */
+
+::-webkit-scrollbar-track {
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 0;
+  background-color: rgba(95,95,95,.4);
+  /* background-color: black; */
+  transition: all .2s;
+  border-radius: .5rem;
+
+  /* &:hover {
+    background-color: rgba(95,95,95, .7);
+  } */
 }

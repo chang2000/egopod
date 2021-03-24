@@ -24,6 +24,7 @@ function App() {
   const [isloggedin, setIsloggedin] = useState(false)
   const [audioUrl, setAudioUrl] = useState('')
   const [playingTitle, setPlayingTitle] = useState('Not Playing')
+  const [showPlayingPanel, setShowPlayingPanel] = useState(false)
 
   // Check cookie
   useEffect(()=>{
@@ -51,6 +52,10 @@ function App() {
   useEffect(()=>{
     console.log('Change playing title', playingTitle)
   }, [playingTitle])
+
+  useEffect(()=>{
+    console.log('playing panel state changed')
+  }, [showPlayingPanel])
 
   const resetPlayingName = () =>{
     let name = store.getState().coreStore[0]
@@ -122,7 +127,12 @@ function App() {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
- } 
+  } 
+
+  const switchPlayingDetailPanel = () => {
+    console.log('clicked')
+    setShowPlayingPanel(!showPlayingPanel)
+  }
 
   return (
     <div className="App">
@@ -177,6 +187,13 @@ function App() {
         }
 
       </header>
+      {showPlayingPanel ? 
+
+        <div>
+          This is playing panel lol
+        </div>
+
+      : 
       <div>
         <Switch>
           <Route path="/library">
@@ -186,12 +203,16 @@ function App() {
             <Explore />
           </Route>
           <Route path="/">
-            <Library />
+            <Explore />
           </Route>
         </Switch>
       </div>
+      }
         <div className='playing-title'>
-          {playingTitle}
+          <div className='playing-title-text'
+            onClick={switchPlayingDetailPanel}>
+            {playingTitle}
+          </div>
           <button onClick={downloadFile}>Download!</button>
         </div>
       <AudioPlayer
