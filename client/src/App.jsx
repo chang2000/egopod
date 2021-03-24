@@ -2,6 +2,7 @@ import './App.css'
 import './index.css'
 import React, { useState, useEffect} from 'react'
 import Explore from "./Explore/Explore"
+import PlayingPanel from "./PlayingPanel/PlayingPanel"
 import axios from 'axios'
 import GoogleLogin from 'react-google-login'
 import AudioPlayer from 'react-h5-audio-player'
@@ -188,11 +189,7 @@ function App() {
 
       </header>
       {showPlayingPanel ? 
-
-        <div>
-          This is playing panel lol
-        </div>
-
+      <PlayingPanel />
       : 
       <div>
         <Switch>
