@@ -8,21 +8,53 @@
 }
 
 .info-left-card {
+  margin: 20px;
 }
 
 .info-left-card-img {
-
+  width: 300px;
+  height: auto;
+  padding-top: 10px;
 }
 
 .info-left-card-title {
+  padding-top: 10px;
 
 }
 
-.info-left-card-title {
+.info-left-card-pub {
+  padding-top: 10px;
 
 }
+
+.info-left-sub {
+  padding-top: 10px;
+}
+
 
 .info-podlist {
   display: flex;
   flex-direction: column;
+}
+
+.single-play-bar {
+  padding: 10px;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.single-play-bar:hover {
+  background-color: grey;
+}
+
+.single-play-bar-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.single-play-bar-start-play {
+  max-height: 20px;
 }

@@ -41,3 +41,7 @@
   width: 7rem;
   cursor: pointer;
 }
+
+.back-btn:hover {
+  color: aquamarine;
+}

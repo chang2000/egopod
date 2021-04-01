@@ -2,12 +2,14 @@ import './App.css'
 import './index.css'
 import React, { useState, useEffect} from 'react'
 import Explore from "./Explore/Explore"
+import Library from "./Library/Library"
 import PlayingPanel from "./PlayingPanel/PlayingPanel"
 import axios from 'axios'
 import GoogleLogin from 'react-google-login'
 import AudioPlayer from 'react-h5-audio-player'
 import 'react-h5-audio-player/lib/styles.css'
 import store from './store'
+// For the switching animation effect
 
 import {
   BrowserRouter as Router,
@@ -114,10 +116,6 @@ function App() {
     setIsloggedin(false)
   }
 
-  function Library() { // will be written in another componment file
-    return <div className="font-medium text-4xl text-center">Library</div>;
-  }
-
   const downloadFile = () =>{
   let link = document.createElement("a");
     link.download = 'audio.mp3';
@@ -188,7 +186,7 @@ function App() {
 
       </header>
       {showPlayingPanel ? 
-      <PlayingPanel />
+        <PlayingPanel />
       : 
       <div>
         <Switch>

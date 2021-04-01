@@ -18,6 +18,7 @@ const PodInfo = (props) =>{
     let itunesLink = `https://itunes.apple.com/lookup?id=${podID}&media=podcast&entity=podcastEpisode`
     // Query
     axios.get(itunesLink).then(res=>{
+      // console.log(res)
       let tmpNames = []
       let tmpUrls = []
 
@@ -36,7 +37,7 @@ const PodInfo = (props) =>{
   }, [epListNames, epListUrls])
 
   const syncPlayInfo = (e, name, url)=> {
-    console.log(name, url,podID)
+    // console.log(name, url,podID)
     store.dispatch({
       type: 'updateUrl',
       payload: url
@@ -49,25 +50,20 @@ const PodInfo = (props) =>{
       type: 'updatePodcastID',
       payload: podID
     })
-    console.log('dispatched')
+    // console.log('dispatched')
   }
 
   const episodeBar =(name, url)=>{
     return (
-    <div className="single-play-bar">
-      <div className="single-play-bar-title">
-        {name}
-      </div>
-      <div className='single-play-bar-other-info'>
-        {/* Other Info */}
-      </div>
-
-      <button className='single-play-bar-start-play' 
+    <div className="single-play-bar"
         onClick={(e)=>{
           syncPlayInfo(e, name, url)
         }}
-      > Play!
-      </button>
+     >
+      <div className="single-play-bar-title">
+        {name}
+      </div>
+
     </div>)
   }
 
@@ -85,12 +81,17 @@ const PodInfo = (props) =>{
       <div className="info-left-card">
         <img className='info-left-card-img' 
           src= {podCoverUrl} />
+
         <div className='info-left-card-title'>
           {podTitle}
         </div> 
 
         <div className='info-left-card-pub'>
           {podPub}
+        </div>
+
+        <div className='info-left-sub'>
+          <button>Subscribe</button>
         </div>
       </div>
 

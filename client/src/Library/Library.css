@@ -1,0 +1,16 @@
+.library-page {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.lib-left-sub {
+  text-align: center;
+
+}
+
+
+.lib-bm {
+  text-align: center;
+}

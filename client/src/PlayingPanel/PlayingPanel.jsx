@@ -2,7 +2,7 @@ import './PlayingPanel.css'
 import React, { useState, useEffect} from 'react'
 import axios from 'axios'
 import 'react-h5-audio-player/lib/styles.css'
-import {Editor, EditorState} from 'draft-js';
+import {Editor, EditorState, convertToRaw} from 'draft-js';
 import "draft-js/dist/Draft.css";
 import store from '../store'
 
@@ -27,7 +27,9 @@ const PlayingPanel = () =>{
   }
 
   const saveText = ()=> {
-    console.log(editorState)
+    const blocks = convertToRaw(editorState.getCurrentContent()).blocks;
+    const value = blocks.map(block => (!block.text.trim() && '\n') || block.text).join('\n');
+    console.log(value)
   }
 
 
@@ -43,11 +45,13 @@ const PlayingPanel = () =>{
       // Find the desc
       for (let i = 1; i < length; i++) {
         if (res.data.results[i].episodeUrl === audioUrl) {
+          console.log(res.data.results[i].description)
           setDesc(res.data.results[i].description)
         }
       }
     })
-  })
+  }, [])
+
   return (
     <div className='core-playing-panel'>
       <div className='playing-panel-left-info'> 
@@ -57,6 +61,9 @@ const PlayingPanel = () =>{
       <div className='pp-left-title'>{title}</div>
       <div className='pp-left-podname'>{podName}</div>
       <div className='pp-left-artist'>{artist}</div>
+      <div className='pp-left-bookmark-btn'>
+        <button>Bookmark this episode</button>
+      </div>
 
       </div>
 
