@@ -7,19 +7,32 @@ const db = mysql.createConnection({
     user: 'root',
     password: 'asdfjkl;',
     database: 'egopod'
-  })
-  
-db.connect((err)=>{
-    if(err) {
+})
+
+db.connect((err) => {
+    if (err) {
         throw (err)
     }
     console.log("Connected")
 })
-  
+
+function sqlQuery(strSql, arr) {
+    return new Promise(function (resolve, reject) {
+        db.query(strSql, arr, (err, results) => {
+            if (err) {
+                reject(err)
+            }
+            else {
+                resolve(results)
+            }
+        })
+    })
+}
+/*
 db.query('SHOW TABLES;', function (err, rows, fields) {
-if (err) throw err
+    if (err) throw err
 
-console.log('Response from DB', rows)
+    console.log('Response from DB', rows)
 })
-
-module.exports = db
+*/
+module.exports = sqlQuery

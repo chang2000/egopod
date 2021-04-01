@@ -1,9 +1,10 @@
 const express = require('express')
 const path = require('path')
-const moment = require('moment')
-const logger = require('./middleware/logger')
+//const moment = require('moment')
+//const logger = require('./middleware/logger')
 const cors = require("cors");
 const mysql = require('mysql')
+
 
 const db = mysql.createConnection({
     host: '18.166.67.196',
@@ -41,6 +42,9 @@ app.use('/api/members', require('./routes/api/members'))
 
 // Google login routes
 app.use('/api/googlelogin', require('./routes/api/googlelogin'))
+
+//user information get
+app.use('/api/userinfo',require('./routes/api/userinfo'))
 
 
 const PORT = process.env.PORT || 5000
