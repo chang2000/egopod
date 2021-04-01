@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const sqlQuery = require('../../db')
 const {OAuth2Client, UserRefreshClient} = require('google-auth-library')
 
 
@@ -13,7 +14,16 @@ router.post("/", (req, res)=>{
         console.log(oauth_res.payload)
         res.status(200).json({userName: name, userEmail: email})
     })
+    /*let strSql = "select * from user where email = " + query.userEmail + ";"
+    let result = await sqlQuery(strSql)
+    if(){
+
+    }else{
+        strSql = "insert into userinfo (username,useremail,favouriteid) values ("+name+","+email+",?);"
+    }
+    console.log(result)*/
 })
+
 
 
 module.exports = router

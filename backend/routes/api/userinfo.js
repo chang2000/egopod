@@ -4,9 +4,9 @@ const router = express.Router()
 
 
 
-router.get('/', async(req, res) => {
+router.get('/', async (req, res) => {
     //res.json({ test: 'test' })
-    console.log(req.url)
+    //console.log(req.url)
     let queryStr = req.url.split('?')[1]
     //split input, 0 is user, 1 is email
     let input = queryStr.split('&')
@@ -18,11 +18,11 @@ router.get('/', async(req, res) => {
         query[key] = value
     })
     console.log(query)
-    let strSql = "select * from user where email = '%"+query.userEmail+"%';"
+    let strSql = "select * from userinfo where useremail = '" + query.userEmail + "';"
+    console.log(strSql)
     let result = await sqlQuery(strSql)
+    console.log("result = " + result)
     res.status(200).json(Array.from(result))
 })
-
-
 
 module.exports = router
