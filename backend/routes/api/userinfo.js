@@ -26,7 +26,7 @@ router.get('/', async (req, res) => {
 
 router.get('/favourite', async (req, res) => {
     console.log(req.query)
-    let strSql = "insert into userfavourite (useremail,favouriteid) values ('" + req.query.userEmail + "','" + req.query.favouriteid + "');"
+    let strSql = "insert ignore into userfavourite (useremail,favouriteid) values ('" + req.query.userEmail + "','" + req.query.favouriteid + "');"
     console.log(strSql)
     let result = await sqlQuery(strSql)
     //console.log("result = " + result)
@@ -44,7 +44,7 @@ router.get('/delete', async (req, res) => {
 
 router.get('/timestamp', async (req, res) => {
     console.log(req.query)
-    let strSql = "insert into timestamp (useremail,boardcast,timestamp) values ('"+ req.query.userEmail +"','"+req.query.boardcast+"','"+ req.query.timestamp +"');"
+    let strSql = "insert ignore into timestamp (useremail,boardcast,timestamp) values ('"+ req.query.userEmail +"','"+req.query.boardcast+"','"+ req.query.timestamp +"');"
     console.log(strSql)
     let result = await sqlQuery(strSql)
     //console.log("result = " + result)
