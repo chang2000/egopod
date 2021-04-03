@@ -37,9 +37,6 @@ app.use(express.urlencoded({extended: false}))
 // Set a static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Memebers api routes
-app.use('/api/members', require('./routes/api/members'))
-
 // Google login routes
 app.use('/api/googlelogin', require('./routes/api/googlelogin'))
 
