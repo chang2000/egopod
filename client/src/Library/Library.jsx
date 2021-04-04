@@ -24,14 +24,26 @@ const Library = (props) => {
     return ""
   }
 
-  const checkCookieEmail = () => {
-    let cookieUserEmail = getCookie("userEmail")
-    if (cookieUserEmail !== "" ) {
-      setUserEmail(cookieUserEmail)
-    }
-    return cookieUserEmail
+  const syncPlayInfo = (name, url, id, podID)=> {
+    console.log(name, url, podID, id)
+    store.dispatch({
+      type: 'updateUrl',
+      payload: url
+    })
+    store.dispatch({
+      type: 'updateName',
+      payload: name
+    })
+    store.dispatch({
+      type: 'updatePodcastID',
+      payload: podID
+    })
+    store.dispatch({
+      type: 'updateEpisodeID',
+      payload: id
+    })
   }
-  
+
   useEffect(()=> {
     let email = checkCookieEmail()
     if (email !== '') {
@@ -64,17 +76,16 @@ const Library = (props) => {
         list.forEach((ele)=>{
           promises.push(
             axios.get(`https://itunes.apple.com/lookup?id=${ele.podcastID}&media=podcast&entity=podcastEpisode&timestamp=${new Date().getTime()}`).then(r=>{
-              console.log(r.data)
               let count = r.data.resultCount - 1
               for (let i = 0; i < count; i++){
                 if ((r.data.results[i+1].trackId).toString() === ele.episodeID){
-                  console.log("found")
                   let b = bmBar(r.data.results[0].collectionName,
                     r.data.results[0].artworkUrl100,
                     ele.podcastID,
                     ele.episodeID,
                     r.data.results[i+1].trackName)
                   tmpList.push(b)
+                  break
                 }
               }
             })
@@ -88,15 +99,39 @@ const Library = (props) => {
       console.log("not logged in") 
     }
   }, [])
-
-
+  const checkCookieEmail = () => {
+    let cookieUserEmail = getCookie("userEmail")
+    if (cookieUserEmail !== "" ) {
+      setUserEmail(cookieUserEmail)
+    }
+    return cookieUserEmail
+  }
+  
 
   const jumpToPodInfo = (podID) => {
     console.log('clicked podid is', podID )
   }
 
   const jumpToPlay = (podID, epID) => {
-    console.log('podID, epID', podID, epID)
+    // Access Url and Name  
+    axios.get(`https://itunes.apple.com/lookup?id=${podID}&media=podcast&entity=podcastEpisode&timestamp=${new Date().getTime()}`).then(r=>{
+      let count = r.data.resultCount - 1
+      let name
+      let url
+      for (let i = 0; i < count; i++){
+        if ((r.data.results[i+1].trackId).toString() === epID){
+          console.log('found')
+          name = r.data.results[i+1].trackName
+          url = r.data.results[i+1].episodeUrl
+          syncPlayInfo(name, url, epID, podID)
+          break
+        }
+      } 
+    })
+
+
+
+
   }
 
   const subPodBar = (podName, coverUrl, podID) => {
