@@ -9,6 +9,7 @@ let db = mysql.createConnection({
     password: 'example',
     database: 'egopod'
 })
+
 function handleDisconnect() {
     db = mysql.createConnection({
         host: '18.162.46.87',
