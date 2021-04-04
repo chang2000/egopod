@@ -2,7 +2,7 @@ import './PlayingPanel.css'
 import React, { useState, useEffect} from 'react'
 import axios from 'axios'
 import 'react-h5-audio-player/lib/styles.css'
-import {Editor, EditorState, convertToRaw} from 'draft-js';
+import {Editor, EditorState, convertToRaw, ContentState} from 'draft-js';
 import "draft-js/dist/Draft.css";
 import store from '../store'
 
@@ -33,6 +33,9 @@ const PlayingPanel = () =>{
     const blocks = convertToRaw(editorState.getCurrentContent()).blocks;
     const value = blocks.map(block => (!block.text.trim() && '\n') || block.text).join('\n');
     console.log(value)
+    let timeStamp = document.getElementById('rhap_current-time').innerHTML
+    console.log(timeStamp)
+    setEditorState(()=>EditorState.createEmpty())
   }
 
 
