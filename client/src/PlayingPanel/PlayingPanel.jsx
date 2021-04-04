@@ -17,6 +17,7 @@ const PlayingPanel = () =>{
   const [artist, setArtisit] = useState('')
   const [podName, setPodName] = useState('')
   const [desc, setDesc] = useState('')
+  const [bookmarked, setBookmarked] = useState();
   const [editorState, setEditorState] = React.useState(() =>
     EditorState.createEmpty()
   );
@@ -36,7 +37,7 @@ const PlayingPanel = () =>{
 
   useEffect(()=>{
     // Try to fetch the information of this specific episode
-    let queryUrl = `https://itunes.apple.com/lookup?id=${podID}&media=podcast&entity=podcastEpisode`
+    let queryUrl = `https://itunes.apple.com/lookup?id=${podID}&media=podcast&entity=podcastEpisode&timestamp=${new Date().getTime()}`
     axios.get(queryUrl).then((res)=>{
       let length = res.data.resultCount
       setCoverUrl(res.data.results[0].artworkUrl600)
@@ -45,34 +46,53 @@ const PlayingPanel = () =>{
       // Find the desc
       for (let i = 1; i < length; i++) {
         if (res.data.results[i].episodeUrl === audioUrl) {
-          console.log(res.data.results[i].description)
-          setDesc(res.data.results[i].description)
+          let d = res.data.results[i].description
+          console.log(d)
+          setDesc(d)
         }
       }
     })
+    setBookmarked(false)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  const bmEpisode = () => {
+
+  }
 
   return (
     <div className='core-playing-panel'>
-      <div className='playing-panel-left-info'> 
-      <img className='pp-left-img' 
-        src={coverUrl} />
+      <div className='pp-left'> 
+        <img className='pp-left-img' 
+          alt=""
+          src={coverUrl} />
 
-      <div className='pp-left-title'>{title}</div>
-      <div className='pp-left-podname'>{podName}</div>
-      <div className='pp-left-artist'>{artist}</div>
-      <div className='pp-left-bookmark-btn'>
-        <button>Bookmark this episode</button>
+        <div className='pp-left-title'>{title}</div>
+        <div className='pp-left-podname'>{podName}</div>
+        <div className='pp-left-artist'>{artist}</div>
+
+        {
+          bookmarked?
+          <div className='pp-left-bookmark-btn' onClick={bmEpisode}>
+            UnBookmark this Episode
+          </div>
+          :
+          <div className='pp-left-bookmark-btn' onClick={bmEpisode}>
+            Bookmark this Episode
+          </div>
+        }
       </div>
 
-      </div>
-
-      <div className='pp-middle-desc'>
-        {desc}
+      <div className='pp-middle'>
+        <div className='pp-middle-title'>
+          Description
+        </div>
+        <div className='pp-middle-desc'>
+          {desc}
+        </div>
       </div>
 
       <div className='pp-right-note'>
-
       <div
       style={{ 
         border: "1px solid black", 
@@ -89,11 +109,12 @@ const PlayingPanel = () =>{
       />
       </div>
         
-      <div className='pp-right-btn'>
-        <button onClick={saveText}>Save Note</button>
+      <div className='pp-right-btn save' onClick={saveText}>
+        Save Note
       </div>
-      <div className='pp-right-btn'>
-        <button>View Note</button>
+
+      <div className='pp-right-btn view' >
+        View Note 
       </div>
       </div>
     </div>

@@ -15,7 +15,7 @@ const PodInfo = (props) =>{
 
   useEffect(()=>{
     // Fetch the episodes list
-    let itunesLink = `https://itunes.apple.com/lookup?id=${podID}&media=podcast&entity=podcastEpisode`
+    let itunesLink = `https://itunes.apple.com/lookup?id=${podID}&media=podcast&entity=podcastEpisode&timestamp=${new Date().getTime()}`
     // Query
     axios.get(itunesLink).then(res=>{
       // console.log(res)
@@ -30,10 +30,12 @@ const PodInfo = (props) =>{
       setEpListNames(tmpNames)
       setEpListUrls(tmpUrls)
     })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(()=>{
     generatePlayBarList()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [epListNames, epListUrls])
 
   const syncPlayInfo = (e, name, url)=> {
@@ -76,10 +78,16 @@ const PodInfo = (props) =>{
     setPlayBarList(tmplist)
   }
 
+  const subscribePodcast = () => {
+    console.log('sub btn clicked')
+
+  }
+
   return (
     <div className="pod-info-page">
       <div className="info-left-card">
         <img className='info-left-card-img' 
+          alt=""
           src= {podCoverUrl} />
 
         <div className='info-left-card-title'>
@@ -90,8 +98,10 @@ const PodInfo = (props) =>{
           {podPub}
         </div>
 
-        <div className='info-left-sub'>
-          <button>Subscribe</button>
+        <div className='info-left-sub'
+          onClick={subscribePodcast}
+        >
+          Subscribe
         </div>
       </div>
 

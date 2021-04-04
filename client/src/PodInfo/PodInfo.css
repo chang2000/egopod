@@ -1,10 +1,10 @@
 .pod-info-page {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  /* align-items: center; */
   margin: 7rem;
-  justify-content:flex-start;
-  align-items: flex-start;
+  justify-content:space-around;
+  /* align-items: flex-start; */
 }
 
 .info-left-card {
@@ -24,7 +24,7 @@
 
 .info-left-card-pub {
   padding-top: 10px;
-
+  padding-bottom: 10px;
 }
 
 .info-left-sub {
@@ -57,4 +57,17 @@
 
 .single-play-bar-start-play {
   max-height: 20px;
+}
+
+.info-left-sub {
+  font-weight: bold;
+  background-color: #2C293A;
+  padding: 10px;
+  width: 180px;
+  margin-left: -10px;
+}
+
+.info-left-sub:hover {
+  background-color: gray;
+  cursor: pointer;
 }

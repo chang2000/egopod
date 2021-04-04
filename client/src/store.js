@@ -2,7 +2,7 @@ import { createStore, combineReducers } from 'redux'
 
 
 const reducer = combineReducers({
-  coreStore: (state = ['', '', 0], 
+  coreStore: (state = ['', '', 0, ''], 
   action) => {
     let newState = Object.assign([], state);
     if (action.type === 'updateName') {
@@ -13,6 +13,9 @@ const reducer = combineReducers({
     }
     if (action.type === 'updatePodcastID') {
       newState[2] = action.payload
+    }
+    if (action.type === 'updateUserEmail') {
+      newState[3] = action.payload
     }
     return newState;
   }
