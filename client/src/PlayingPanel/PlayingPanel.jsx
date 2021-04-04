@@ -17,6 +17,7 @@ const PlayingPanel = () =>{
   const [artist, setArtisit] = useState('')
   const [podName, setPodName] = useState('')
   const [desc, setDesc] = useState('')
+  const [bookmarked, SetBookmarked] = useState();
   const [editorState, setEditorState] = React.useState(() =>
     EditorState.createEmpty()
   );
@@ -45,34 +46,42 @@ const PlayingPanel = () =>{
       // Find the desc
       for (let i = 1; i < length; i++) {
         if (res.data.results[i].episodeUrl === audioUrl) {
-          console.log(res.data.results[i].description)
-          setDesc(res.data.results[i].description)
+          let d = res.data.results[i].description
+          console.log(d)
+          setDesc(d)
         }
       }
     })
   }, [])
 
+  const bmEpisode = () => {
+
+  }
+
   return (
     <div className='core-playing-panel'>
-      <div className='playing-panel-left-info'> 
-      <img className='pp-left-img' 
-        src={coverUrl} />
+      <div className='pp-left'> 
+        <img className='pp-left-img' 
+          src={coverUrl} />
 
-      <div className='pp-left-title'>{title}</div>
-      <div className='pp-left-podname'>{podName}</div>
-      <div className='pp-left-artist'>{artist}</div>
-      <div className='pp-left-bookmark-btn'>
-        <button>Bookmark this episode</button>
+        <div className='pp-left-title'>{title}</div>
+        <div className='pp-left-podname'>{podName}</div>
+        <div className='pp-left-artist'>{artist}</div>
+        <div className='pp-left-bookmark-btn' onClick={bmEpisode}>
+          Bookmark this Episode
+        </div>
       </div>
 
-      </div>
-
-      <div className='pp-middle-desc'>
-        {desc}
+      <div className='pp-middle'>
+        <div className='pp-middle-title'>
+          Description
+        </div>
+        <div className='pp-middle-desc'>
+          {desc}
+        </div>
       </div>
 
       <div className='pp-right-note'>
-
       <div
       style={{ 
         border: "1px solid black", 
@@ -89,11 +98,12 @@ const PlayingPanel = () =>{
       />
       </div>
         
-      <div className='pp-right-btn'>
-        <button onClick={saveText}>Save Note</button>
+      <div className='pp-right-btn save' onClick={saveText}>
+        Save Note
       </div>
-      <div className='pp-right-btn'>
-        <button>View Note</button>
+
+      <div className='pp-right-btn view' >
+        View Note 
       </div>
       </div>
     </div>

@@ -207,7 +207,11 @@ function App() {
             onClick={switchPlayingDetailPanel}>
             {playingTitle}
           </div>
-          <button onClick={downloadFile}>Download!</button>
+          {playingTitle !== 'Not Playing' ?
+          <button onClick={downloadFile}>Download</button>
+          :
+          <div></div>
+          }
         </div>
       <AudioPlayer
         className='core-player'

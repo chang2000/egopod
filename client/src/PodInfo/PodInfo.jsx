@@ -76,6 +76,11 @@ const PodInfo = (props) =>{
     setPlayBarList(tmplist)
   }
 
+  const subscribePodcast = () => {
+    console.log('sub btn clicked')
+
+  }
+
   return (
     <div className="pod-info-page">
       <div className="info-left-card">
@@ -90,8 +95,10 @@ const PodInfo = (props) =>{
           {podPub}
         </div>
 
-        <div className='info-left-sub'>
-          <button>Subscribe</button>
+        <div className='info-left-sub'
+          onClick={subscribePodcast}
+        >
+          Subscribe
         </div>
       </div>
 
