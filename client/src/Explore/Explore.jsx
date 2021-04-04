@@ -20,7 +20,6 @@ const Explore = () =>{
   },[])
 
   useEffect(()=>{
-    console.log('podlist changed')
   }, [podlist])
 
   const changeToSingleView = (e, name, url, pub, id) =>{
@@ -56,7 +55,7 @@ const Explore = () =>{
   }
 
   const requestSearch = (val) => {
-    let searchUrl = 'https://itunes.apple.com/search?timestamp=${new Date().getTime()}&media=podcast&term='
+    let searchUrl = `https://itunes.apple.com/search?timestamp=${new Date().getTime()}&media=podcast&term=`
     if (val !== '') {
      searchUrl = searchUrl + val
     } else {

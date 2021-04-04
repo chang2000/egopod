@@ -1,4 +1,5 @@
 import './PodInfo.css'
+import '../index.css'
 import React, { useState, useEffect} from 'react'
 import axios from 'axios'
 import store from '../store'
@@ -9,9 +10,11 @@ const PodInfo = (props) =>{
   const podTitle = props.podTitle
   const podPub = props.podPub
   const podID = props.podID
+  const userEmail = store.getState().coreStore[3]
   const [epListNames, setEpListNames] = useState([])
   const [epListUrls, setEpListUrls] = useState([])
   const [playBarList, setPlayBarList] = useState([])
+  const [subscribed, setSubscribed] = useState(false)
 
   useEffect(()=>{
     // Fetch the episodes list
@@ -30,6 +33,25 @@ const PodInfo = (props) =>{
       setEpListNames(tmpNames)
       setEpListUrls(tmpUrls)
     })
+    // Check wether this podcast is subscribed
+    console.log('userEmail is', userEmail)
+    if (userEmail !== '') {
+      let query = `http://localhost:5000/api/sub/queryAll?userEmail=${userEmail}`
+      console.log(query)
+      axios.get(query).then((res)=>{
+        let subList = res.data.subscribedIDs
+        console.log(subList)
+        let found = subList.indexOf(podID.toString())
+        console.log(found)
+        if (found === -1) {
+          setSubscribed(false)
+        } else {
+          setSubscribed(true)
+        }
+
+      })
+
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -52,7 +74,6 @@ const PodInfo = (props) =>{
       type: 'updatePodcastID',
       payload: podID
     })
-    // console.log('dispatched')
   }
 
   const episodeBar =(name, url)=>{
@@ -79,8 +100,19 @@ const PodInfo = (props) =>{
   }
 
   const subscribePodcast = () => {
-    console.log('sub btn clicked')
+    let query = `http://localhost:5000/api/sub/addsub?podcastID=${podID}&userEmail=${userEmail}`
+    console.log(query)
+    axios.get(query).then(res=>{
+      setSubscribed(true)
+    })
+  }
 
+  const unSubscribePodcast = () => {
+    let query = `http://localhost:5000/api/sub/unsub?podcastID=${podID}&userEmail=${userEmail}`
+    console.log(query)
+    axios.get(query).then(res=>{
+    setSubscribed(false)
+    })
   }
 
   return (
@@ -98,11 +130,20 @@ const PodInfo = (props) =>{
           {podPub}
         </div>
 
-        <div className='info-left-sub'
-          onClick={subscribePodcast}
-        >
-          Subscribe
-        </div>
+        {
+          subscribed === false ? 
+          <div className='info-left-sub noselect'
+            onClick={subscribePodcast}
+          >
+            Subscribe
+          </div>
+          : 
+          <div className='info-left-sub noselect'
+            onClick={unSubscribePodcast}
+          >
+            UnSubscribe
+          </div>
+        }
       </div>
 
       <div className="info-podlist">

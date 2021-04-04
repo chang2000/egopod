@@ -7,10 +7,30 @@
 
 .lib-left-sub {
   text-align: center;
+}
 
+.lib-sub-header {
+  font-size: 19px;
+  font-weight: bold;
+  padding: 20px;
 }
 
 
 .lib-bm {
   text-align: center;
+}
+
+.sub-pod-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.sub-pod-img {
+  height: 50px;
+  width: auto;
+}
+.sub-pod-title {
+  font-size: 20px;
+  font-weight: bold;
 }
