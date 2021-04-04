@@ -55,6 +55,34 @@ const Library = (props) => {
       })
 
       // fetch the bookmark info
+      query = `http://localhost:5000/api/bm/queryAll?userEmail=${email}`
+      axios.get(query).then(res=>{
+        console.log(res.data.subscribedIDs)
+        let list = res.data.subscribedIDs
+        let promises = [];
+        let tmpList = [];
+        list.forEach((ele)=>{
+          promises.push(
+            axios.get(`https://itunes.apple.com/lookup?id=${ele.podcastID}&media=podcast&entity=podcastEpisode&timestamp=${new Date().getTime()}`).then(r=>{
+              console.log(r.data)
+              let count = r.data.resultCount - 1
+              for (let i = 0; i < count; i++){
+                if ((r.data.results[i+1].trackId).toString() === ele.episodeID){
+                  console.log("found")
+                  let b = bmBar(r.data.results[0].collectionName,
+                    r.data.results[0].artworkUrl100,
+                    ele.podcastID,
+                    ele.episodeID,
+                    r.data.results[i+1].trackName)
+                  tmpList.push(b)
+                }
+              }
+            })
+          )
+        })
+      Promise.all(promises).then(() => setBmList(tmpList)); 
+        
+      })
       
     } else {
       console.log("not logged in") 
@@ -67,6 +95,10 @@ const Library = (props) => {
     console.log('clicked podid is', podID )
   }
 
+  const jumpToPlay = (podID, epID) => {
+    console.log('podID, epID', podID, epID)
+  }
+
   const subPodBar = (podName, coverUrl, podID) => {
     return (
       <div className='sub-pod-bar' 
@@ -77,7 +109,25 @@ const Library = (props) => {
         </div>
       </div>
     )
+  }
 
+  const bmBar = (podName, coverUrl, podID, epID, title) => {
+    return (
+      <div className='sub-pod-bar' 
+        onClick={()=>{jumpToPlay(podID, epID)}}>
+        <img className='sub-pod-img'  src={coverUrl} alt=""/>
+        <div className='text-block'>
+
+          <div className='bm-title'>
+            {title}
+          </div>
+          <div className='bm-name'>
+            {podName}
+          </div>
+        </div>
+
+      </div>
+    )
   }
 
 
