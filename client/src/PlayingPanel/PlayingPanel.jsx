@@ -37,7 +37,7 @@ const PlayingPanel = () =>{
 
   useEffect(()=>{
     // Try to fetch the information of this specific episode
-    let queryUrl = `https://itunes.apple.com/lookup?id=${podID}&media=podcast&entity=podcastEpisode`
+    let queryUrl = `https://itunes.apple.com/lookup?id=${podID}&media=podcast&entity=podcastEpisode&timestamp=${new Date().getTime()}`
     axios.get(queryUrl).then((res)=>{
       let length = res.data.resultCount
       setCoverUrl(res.data.results[0].artworkUrl600)

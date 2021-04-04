@@ -56,7 +56,7 @@ const Explore = () =>{
   }
 
   const requestSearch = (val) => {
-    let searchUrl = 'https://itunes.apple.com/search?media=podcast&term='
+    let searchUrl = 'https://itunes.apple.com/search?timestamp=${new Date().getTime()}&media=podcast&term='
     if (val != '') {
      searchUrl = searchUrl + val
     } else {
@@ -84,7 +84,7 @@ const Explore = () =>{
       <SearchBar 
       value={''}
       onChange={(newval)=> requestSearch(newval) }
-      onRequestSearch={()=>console.log('request search')}
+      onRequestSearch={(newval)=> requestSearch(newval) }
       />
       {
       podlist.map((item, key) =>(

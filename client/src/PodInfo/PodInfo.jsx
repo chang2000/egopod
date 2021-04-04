@@ -15,7 +15,7 @@ const PodInfo = (props) =>{
 
   useEffect(()=>{
     // Fetch the episodes list
-    let itunesLink = `https://itunes.apple.com/lookup?id=${podID}&media=podcast&entity=podcastEpisode`
+    let itunesLink = `https://itunes.apple.com/lookup?id=${podID}&media=podcast&entity=podcastEpisode&timestamp=${new Date().getTime()}`
     // Query
     axios.get(itunesLink).then(res=>{
       // console.log(res)
