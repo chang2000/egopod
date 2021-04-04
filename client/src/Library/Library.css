@@ -24,6 +24,12 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  padding: 10px;
+}
+
+.sub-pod-bar:hover {
+  background-color: gray;
+  cursor: pointer;
 }
 
 .sub-pod-img {

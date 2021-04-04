@@ -36,36 +36,30 @@ const Library = (props) => {
     let email = checkCookieEmail()
     if (email !== '') {
       // fetchAllSubs
-      fetchSubs(email)
+      // MAGIC !!!!! ASYNC HANDLING
+      let query = `http://localhost:5000/api/sub/queryAll?userEmail=${email}`
+      axios.get(query).then(res=>{
+        let idList = res.data.subscribedIDs
+        let promises = [];
+        let tmpList = [];
+        idList.forEach((ele)=>{
+        promises.push(
+          axios.get(`https://itunes.apple.com/lookup?id=${ele}&media=podcast&entity=podcastEpisode&timestamp=${new Date().getTime()}`).then(iRes => {
+            // do something with response
+            let bar = subPodBar(iRes.data.results[0].collectionName, iRes.data.results[0].artworkUrl100, ele)
+            tmpList.push(bar);
+          })
+        )
+        })
+      Promise.all(promises).then(() => setSubList(tmpList)); 
+      })
+      
     } else {
       console.log("not logged in") 
     }
   }, [])
 
-   const fetchSubs = async (email) =>{
-    let query = `http://localhost:5000/api/sub/queryAll?userEmail=${email}`
-    let tmp = []
-    await axios.get(query).then(res=>{
-      let idList = res.data.subscribedIDs
-      idList.forEach((ele)=>{
-        let bar = fetchSingleInfo(ele)
-        subList.push(bar)
-        console.log(subList)
-        setSubList(subList)        
-      })
-    })
 
-  }
-
-  const fetchSingleInfo = async (ele) => {
-    let itunesLink = `https://itunes.apple.com/lookup?id=${ele}&media=podcast&entity=podcastEpisode&timestamp=${new Date().getTime()}`
-    let bar
-    await axios.get(itunesLink).then(iRes=>{
-      console.log(iRes.data.results[0].collectionName)
-      bar = subPodBar(iRes.data.results[0].collectionName, iRes.data.results[0].artworkUrl100, ele)
-    })
-    return bar
-  }
 
   const jumpToPodInfo = (podID) => {
     console.log('clicked podid is', podID )
