@@ -53,6 +53,8 @@ const Library = (props) => {
         })
       Promise.all(promises).then(() => setSubList(tmpList)); 
       })
+
+      // fetch the bookmark info
       
     } else {
       console.log("not logged in") 

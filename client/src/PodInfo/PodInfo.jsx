@@ -13,6 +13,7 @@ const PodInfo = (props) =>{
   const userEmail = store.getState().coreStore[3]
   const [epListNames, setEpListNames] = useState([])
   const [epListUrls, setEpListUrls] = useState([])
+  const [epIDs, setEpIDs] = useState([])
   const [playBarList, setPlayBarList] = useState([])
   const [subscribed, setSubscribed] = useState(false)
 
@@ -21,28 +22,27 @@ const PodInfo = (props) =>{
     let itunesLink = `https://itunes.apple.com/lookup?id=${podID}&media=podcast&entity=podcastEpisode&timestamp=${new Date().getTime()}`
     // Query
     axios.get(itunesLink).then(res=>{
-      // console.log(res)
       let tmpNames = []
       let tmpUrls = []
+      let tmpIDs = []
 
       let n_episodes = res.data.resultCount - 1
       for (let j = 0; j < n_episodes; j++) {
         tmpNames.push(res.data.results[j+1].trackName)
         tmpUrls.push(res.data.results[j+1].episodeUrl)
+        tmpIDs.push(res.data.results[j+1].trackId)
       }
       setEpListNames(tmpNames)
       setEpListUrls(tmpUrls)
+      setEpIDs(tmpIDs)
     })
     // Check wether this podcast is subscribed
     console.log('userEmail is', userEmail)
     if (userEmail !== '') {
       let query = `http://localhost:5000/api/sub/queryAll?userEmail=${userEmail}`
-      console.log(query)
       axios.get(query).then((res)=>{
         let subList = res.data.subscribedIDs
-        console.log(subList)
         let found = subList.indexOf(podID.toString())
-        console.log(found)
         if (found === -1) {
           setSubscribed(false)
         } else {
@@ -57,11 +57,10 @@ const PodInfo = (props) =>{
 
   useEffect(()=>{
     generatePlayBarList()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [epListNames, epListUrls])
+  }, [epListNames, epListUrls, epIDs])
 
-  const syncPlayInfo = (e, name, url)=> {
-    // console.log(name, url,podID)
+  const syncPlayInfo = (e, name, url, id)=> {
+    console.log(name, url, podID, id)
     store.dispatch({
       type: 'updateUrl',
       payload: url
@@ -74,13 +73,17 @@ const PodInfo = (props) =>{
       type: 'updatePodcastID',
       payload: podID
     })
+    store.dispatch({
+      type: 'updateEpisodeID',
+      payload: id
+    })
   }
 
-  const episodeBar =(name, url)=>{
+  const episodeBar =(name, url, id)=>{
     return (
     <div className="single-play-bar"
         onClick={(e)=>{
-          syncPlayInfo(e, name, url)
+          syncPlayInfo(e, name, url, id)
         }}
      >
       <div className="single-play-bar-title">
@@ -94,14 +97,13 @@ const PodInfo = (props) =>{
     let length = epListNames.length
     let tmplist = []
     for (let i = 0; i < length; i++) {
-      tmplist.push(episodeBar(epListNames[i], epListUrls[i]))
+      tmplist.push(episodeBar(epListNames[i], epListUrls[i], epIDs[i]))
     }
     setPlayBarList(tmplist)
   }
 
   const subscribePodcast = () => {
     let query = `http://localhost:5000/api/sub/addsub?podcastID=${podID}&userEmail=${userEmail}`
-    console.log(query)
     axios.get(query).then(res=>{
       setSubscribed(true)
     })
@@ -109,7 +111,6 @@ const PodInfo = (props) =>{
 
   const unSubscribePodcast = () => {
     let query = `http://localhost:5000/api/sub/unsub?podcastID=${podID}&userEmail=${userEmail}`
-    console.log(query)
     axios.get(query).then(res=>{
     setSubscribed(false)
     })
