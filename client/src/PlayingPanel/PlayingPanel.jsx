@@ -17,7 +17,7 @@ const PlayingPanel = () =>{
   const [artist, setArtisit] = useState('')
   const [podName, setPodName] = useState('')
   const [desc, setDesc] = useState('')
-  const [bookmarked, SetBookmarked] = useState();
+  const [bookmarked, setBookmarked] = useState();
   const [editorState, setEditorState] = React.useState(() =>
     EditorState.createEmpty()
   );
@@ -52,6 +52,8 @@ const PlayingPanel = () =>{
         }
       }
     })
+    setBookmarked(false)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const bmEpisode = () => {
@@ -62,14 +64,23 @@ const PlayingPanel = () =>{
     <div className='core-playing-panel'>
       <div className='pp-left'> 
         <img className='pp-left-img' 
+          alt=""
           src={coverUrl} />
 
         <div className='pp-left-title'>{title}</div>
         <div className='pp-left-podname'>{podName}</div>
         <div className='pp-left-artist'>{artist}</div>
-        <div className='pp-left-bookmark-btn' onClick={bmEpisode}>
-          Bookmark this Episode
-        </div>
+
+        {
+          bookmarked?
+          <div className='pp-left-bookmark-btn' onClick={bmEpisode}>
+            UnBookmark this Episode
+          </div>
+          :
+          <div className='pp-left-bookmark-btn' onClick={bmEpisode}>
+            Bookmark this Episode
+          </div>
+        }
       </div>
 
       <div className='pp-middle'>

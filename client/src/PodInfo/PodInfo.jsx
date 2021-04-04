@@ -30,10 +30,12 @@ const PodInfo = (props) =>{
       setEpListNames(tmpNames)
       setEpListUrls(tmpUrls)
     })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(()=>{
     generatePlayBarList()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [epListNames, epListUrls])
 
   const syncPlayInfo = (e, name, url)=> {
@@ -85,6 +87,7 @@ const PodInfo = (props) =>{
     <div className="pod-info-page">
       <div className="info-left-card">
         <img className='info-left-card-img' 
+          alt=""
           src= {podCoverUrl} />
 
         <div className='info-left-card-title'>

@@ -34,10 +34,12 @@ function App() {
     if (cookieUserName !== "" ) {
       setUserName(cookieUserName)
       setUserEmail(cookieUserEmail)
+      updateEmailStore()
     }
 
     store.subscribe(resetPlayingUrl)
     store.subscribe(resetPlayingName)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []) 
 
   useEffect(()=>{
@@ -92,6 +94,13 @@ function App() {
     return ""
   }
 
+  const updateEmailStore = () => {
+    store.dispatch({
+      type: 'updateUserEmail',
+      payload: userEmail
+    })
+  }
+
   const responseGoogle = (response) => {
     axios({
       method: "POST",
@@ -100,8 +109,8 @@ function App() {
     }).then(res => {
       setUserName(res.data.userName)
       setUserEmail(res.data.userEmail)
-      console.log(res.data.userName)
-      console.log(res.data.userEmail)
+      console.log("the current email is", userEmail)
+      updateEmailStore()
       // Set up Cookie here
       setCookie('userName', res.data.userName, 3)
       setCookie('userEmail', res.data.userEmail, 3)

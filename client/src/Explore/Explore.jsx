@@ -1,7 +1,5 @@
 import './Explore.css'
 import React, { useState, useEffect} from 'react'
-import best from './Best-podcast'
-import podData from './Podcast-data'
 import axios from 'axios'
 import PodInfo from '../PodInfo/PodInfo'
 import SearchBar from "material-ui-search-bar";
@@ -18,6 +16,7 @@ const Explore = () =>{
 
   useEffect(()=>{ 
     requestSearch('tech')
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
   useEffect(()=>{
@@ -44,6 +43,7 @@ const Explore = () =>{
           changeToSingleView(e, name, url, pub, id)
       })} >
       <img className="card-image"
+        alt=""
         src={url} />
       <div className="card-title">
         {name}
@@ -57,7 +57,7 @@ const Explore = () =>{
 
   const requestSearch = (val) => {
     let searchUrl = 'https://itunes.apple.com/search?timestamp=${new Date().getTime()}&media=podcast&term='
-    if (val != '') {
+    if (val !== '') {
      searchUrl = searchUrl + val
     } else {
       searchUrl = searchUrl + 'tech'
@@ -79,7 +79,7 @@ const Explore = () =>{
   }
 
   return (
-    showExplore == true?
+    showExplore === true?
     <div className="podGallery">
       <SearchBar 
       value={''}
