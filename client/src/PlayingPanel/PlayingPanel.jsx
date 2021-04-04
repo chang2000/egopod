@@ -93,7 +93,7 @@ const PlayingPanel = () =>{
   }
 
   const unBmEpisode = () => { 
-    let query = `http://localhost:5000/api/bm/addbm?podcastID=${podID}&episodeID=${epID}&userEmail=${userEmail}`
+    let query = `http://localhost:5000/api/bm/unbm?podcastID=${podID}&episodeID=${epID}&userEmail=${userEmail}`
     axios.get(query).then(res=>{
       setBookmarked(false)
     })
