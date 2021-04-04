@@ -31,10 +31,12 @@ function App() {
   useEffect(()=>{
     let cookieUserName = getCookie("userName")
     let cookieUserEmail = getCookie("userEmail")
+    // console.log("current username is", cookieUserName)
+    // console.log("current email is", cookieUserEmail)
     if (cookieUserName !== "" ) {
       setUserName(cookieUserName)
       setUserEmail(cookieUserEmail)
-      updateEmailStore()
+      updateEmailStore(cookieUserEmail)
     }
 
     store.subscribe(resetPlayingUrl)
@@ -46,18 +48,18 @@ function App() {
     if(userName !== '') {
       setIsloggedin(true)
     }
-  }, [userName])
+  }, [userName, userEmail])
 
   useEffect(()=>{
-    console.log('Change Playing Url', audioUrl)
+    // console.log('Change Playing Url', audioUrl)
   }, [audioUrl])
 
   useEffect(()=>{
-    console.log('Change playing title', playingTitle)
+    // console.log('Change playing title', playingTitle)
   }, [playingTitle])
 
   useEffect(()=>{
-    console.log('playing panel state changed')
+    // console.log('playing panel state changed')
   }, [showPlayingPanel])
 
   const resetPlayingName = () =>{
@@ -94,10 +96,10 @@ function App() {
     return ""
   }
 
-  const updateEmailStore = () => {
+  const updateEmailStore = (email) => {
     store.dispatch({
       type: 'updateUserEmail',
-      payload: userEmail
+      payload: email
     })
   }
 
@@ -109,8 +111,7 @@ function App() {
     }).then(res => {
       setUserName(res.data.userName)
       setUserEmail(res.data.userEmail)
-      console.log("the current email is", userEmail)
-      updateEmailStore()
+      updateEmailStore(res.data.userEmail)
       // Set up Cookie here
       setCookie('userName', res.data.userName, 3)
       setCookie('userEmail', res.data.userEmail, 3)
@@ -186,7 +187,7 @@ function App() {
             <GoogleLogin
             className="loginBtn"
             clientId="81834534286-ksipb13ampj692eia95sqaed3r67jeje.apps.googleusercontent.com" // Secret
-            buttonText="Singin with google"
+            buttonText="Signin with google"
             onSuccess={responseGoogle}
             onFailure={responseGoogle}
             cookiePolicy={"single_host_origin"}
@@ -200,7 +201,9 @@ function App() {
       <div>
         <Switch>
           <Route path="/library">
-            <Library />
+            <Library 
+            userEmail={userEmail}
+            />
           </Route>
           <Route path="/explore">
             <Explore />

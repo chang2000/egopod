@@ -2,7 +2,7 @@ import './PlayingPanel.css'
 import React, { useState, useEffect} from 'react'
 import axios from 'axios'
 import 'react-h5-audio-player/lib/styles.css'
-import {Editor, EditorState, convertToRaw} from 'draft-js';
+import {Editor, EditorState, convertToRaw, ContentState} from 'draft-js';
 import "draft-js/dist/Draft.css";
 import store from '../store'
 
@@ -12,6 +12,8 @@ const PlayingPanel = () =>{
   const title = store.getState().coreStore[0]
   const audioUrl = store.getState().coreStore[1]
   const podID = store.getState().coreStore[2]
+  const userEmail = store.getState().coreStore[3]
+  const epID = store.getState().coreStore[4]
 
   const [coverUrl, setCoverUrl] = useState('')
   const [artist, setArtisit] = useState('')
@@ -31,6 +33,9 @@ const PlayingPanel = () =>{
     const blocks = convertToRaw(editorState.getCurrentContent()).blocks;
     const value = blocks.map(block => (!block.text.trim() && '\n') || block.text).join('\n');
     console.log(value)
+    let timeStamp = document.getElementById('rhap_current-time').innerHTML
+    console.log(timeStamp)
+    setEditorState(()=>EditorState.createEmpty())
   }
 
 
@@ -47,17 +52,51 @@ const PlayingPanel = () =>{
       for (let i = 1; i < length; i++) {
         if (res.data.results[i].episodeUrl === audioUrl) {
           let d = res.data.results[i].description
-          console.log(d)
+          // console.log(d)
           setDesc(d)
         }
       }
     })
-    setBookmarked(false)
+
+    // Check if the current episode is bookmarked
+    let bmQuery = `http://localhost:5000/api/bm/queryAll?userEmail=${userEmail}`
+    // console.log("MY ID IS", epID)
+    axios.get(bmQuery).then(res=>{
+      let epList = res.data.subscribedIDs
+      // Compare
+      let found = false
+      for (let i = 0; i < epList.length; i++) {
+        if ((epList[i].podcastID).toString() === podID && (epList[i].episodeID).toString() == epID) {
+          // console.log('yes')
+          found = true
+        }
+      }
+      if (found) {
+        setBookmarked(true)
+      } else {
+        setBookmarked(false)
+      }
+    })
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const bmEpisode = () => {
+  useEffect(()=>{
 
+  }, [bookmarked])
+
+  const bmEpisode = () => {
+    let query = `http://localhost:5000/api/bm/addbm?podcastID=${podID}&episodeID=${epID}&userEmail=${userEmail}`
+    axios.get(query).then(res=>{
+      setBookmarked(true)
+    })
+  }
+
+  const unBmEpisode = () => { 
+    let query = `http://localhost:5000/api/bm/unbm?podcastID=${podID}&episodeID=${epID}&userEmail=${userEmail}`
+    axios.get(query).then(res=>{
+      setBookmarked(false)
+    })
   }
 
   return (
@@ -73,7 +112,7 @@ const PlayingPanel = () =>{
 
         {
           bookmarked?
-          <div className='pp-left-bookmark-btn' onClick={bmEpisode}>
+          <div className='pp-left-bookmark-btn' onClick={unBmEpisode}>
             UnBookmark this Episode
           </div>
           :
@@ -113,7 +152,7 @@ const PlayingPanel = () =>{
         Save Note
       </div>
 
-      <div className='pp-right-btn view' >
+      <div className='pp-right-btn view'>
         View Note 
       </div>
       </div>
