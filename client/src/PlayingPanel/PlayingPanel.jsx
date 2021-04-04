@@ -57,14 +57,14 @@ const PlayingPanel = () =>{
 
     // Check if the current episode is bookmarked
     let bmQuery = `http://localhost:5000/api/bm/queryAll?userEmail=${userEmail}`
-    console.log("MY ID IS", epID)
+    // console.log("MY ID IS", epID)
     axios.get(bmQuery).then(res=>{
       let epList = res.data.subscribedIDs
       // Compare
       let found = false
       for (let i = 0; i < epList.length; i++) {
         if ((epList[i].podcastID).toString() === podID && (epList[i].episodeID).toString() == epID) {
-          console.log('yes')
+          // console.log('yes')
           found = true
         }
       }

@@ -187,7 +187,7 @@ function App() {
             <GoogleLogin
             className="loginBtn"
             clientId="81834534286-ksipb13ampj692eia95sqaed3r67jeje.apps.googleusercontent.com" // Secret
-            buttonText="Singin with google"
+            buttonText="Signin with google"
             onSuccess={responseGoogle}
             onFailure={responseGoogle}
             cookiePolicy={"single_host_origin"}
