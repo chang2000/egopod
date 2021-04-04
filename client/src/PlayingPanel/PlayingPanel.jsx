@@ -63,7 +63,7 @@ const PlayingPanel = () =>{
       // Compare
       let found = false
       for (let i = 0; i < epList.length; i++) {
-        if (epList[i].podcastID === podID && epList[i].episodeID == epID) {
+        if ((epList[i].podcastID).toString() === podID && (epList[i].episodeID).toString() == epID) {
           console.log('yes')
           found = true
         }

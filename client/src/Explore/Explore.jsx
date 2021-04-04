@@ -81,6 +81,7 @@ const Explore = () =>{
     showExplore === true?
     <div className="podGallery">
       <SearchBar 
+      className='search-bar'
       value={''}
       onChange={(newval)=> requestSearch(newval) }
       onRequestSearch={(newval)=> requestSearch(newval) }

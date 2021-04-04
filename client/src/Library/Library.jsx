@@ -99,6 +99,7 @@ const Library = (props) => {
       console.log("not logged in") 
     }
   }, [])
+
   const checkCookieEmail = () => {
     let cookieUserEmail = getCookie("userEmail")
     if (cookieUserEmail !== "" ) {
