@@ -2,10 +2,10 @@ const express = require('express')
 const mysql = require('mysql')
 
 const db = mysql.createConnection({
-    host: '18.166.67.196',
+    host: '18.162.46.87',
     port: '3306',
     user: 'root',
-    password: 'asdfjkl;',
+    password: 'example',
     database: 'egopod'
 })
 

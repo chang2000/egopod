@@ -30,7 +30,7 @@ router.get('/favourite', async (req, res) => {
     console.log(strSql)
     let result = await sqlQuery(strSql)
     //console.log("result = " + result)
-    res.status(200)
+    res.status(200).send()
 })
 
 router.get('/delete', async (req, res) => {
@@ -39,7 +39,7 @@ router.get('/delete', async (req, res) => {
     console.log(strSql)
     let result = await sqlQuery(strSql)
     //console.log("result = " + result)
-    res.status(200)
+    res.status(200).send()
 })
 
 router.get('/timestamp', async (req, res) => {
@@ -48,7 +48,7 @@ router.get('/timestamp', async (req, res) => {
     console.log(strSql)
     let result = await sqlQuery(strSql)
     //console.log("result = " + result)
-    res.status(200)
+    res.status(200).send()
 })
 
 module.exports = router
