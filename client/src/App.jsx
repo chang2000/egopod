@@ -106,7 +106,7 @@ function App() {
   const responseGoogle = (response) => {
     axios({
       method: "POST",
-      url: "http://localhost:5000/api/googlelogin",
+      url: "http://16.162.28.154:5000/api/googlelogin",
       data: {tokenId: response.tokenId, 
             time: new Date().getTime()}
     }).then(res => {

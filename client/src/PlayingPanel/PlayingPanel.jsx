@@ -59,7 +59,7 @@ const PlayingPanel = () =>{
     })
 
     // Check if the current episode is bookmarked
-    let bmQuery = `http://localhost:5000/api/bm/queryAll?userEmail=${userEmail}`
+    let bmQuery = `http://16.162.28.154:5000/api/bm/queryAll?userEmail=${userEmail}`
     // console.log("MY ID IS", epID)
     axios.get(bmQuery).then(res=>{
       let epList = res.data.subscribedIDs
@@ -86,14 +86,14 @@ const PlayingPanel = () =>{
   }, [bookmarked])
 
   const bmEpisode = () => {
-    let query = `http://localhost:5000/api/bm/addbm?podcastID=${podID}&episodeID=${epID}&userEmail=${userEmail}`
+    let query = `http://16.162.28.154:5000/api/bm/addbm?podcastID=${podID}&episodeID=${epID}&userEmail=${userEmail}`
     axios.get(query).then(res=>{
       setBookmarked(true)
     })
   }
 
   const unBmEpisode = () => { 
-    let query = `http://localhost:5000/api/bm/unbm?podcastID=${podID}&episodeID=${epID}&userEmail=${userEmail}`
+    let query = `http://16.162.28.154:5000/api/bm/unbm?podcastID=${podID}&episodeID=${epID}&userEmail=${userEmail}`
     axios.get(query).then(res=>{
       setBookmarked(false)
     })

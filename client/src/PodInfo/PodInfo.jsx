@@ -39,7 +39,7 @@ const PodInfo = (props) =>{
     // Check wether this podcast is subscribed
     console.log('userEmail is', userEmail)
     if (userEmail !== '') {
-      let query = `http://localhost:5000/api/sub/queryAll?userEmail=${userEmail}`
+      let query = `http://16.162.28.154:5000/api/sub/queryAll?userEmail=${userEmail}`
       axios.get(query).then((res)=>{
         let subList = res.data.subscribedIDs
         let found = subList.indexOf(podID.toString())
@@ -103,14 +103,14 @@ const PodInfo = (props) =>{
   }
 
   const subscribePodcast = () => {
-    let query = `http://localhost:5000/api/sub/addsub?podcastID=${podID}&userEmail=${userEmail}`
+    let query = `http://16.162.28.154:5000/api/sub/addsub?podcastID=${podID}&userEmail=${userEmail}`
     axios.get(query).then(res=>{
       setSubscribed(true)
     })
   }
 
   const unSubscribePodcast = () => {
-    let query = `http://localhost:5000/api/sub/unsub?podcastID=${podID}&userEmail=${userEmail}`
+    let query = `http://16.162.28.154:5000/api/sub/unsub?podcastID=${podID}&userEmail=${userEmail}`
     axios.get(query).then(res=>{
     setSubscribed(false)
     })
