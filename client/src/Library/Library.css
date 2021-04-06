@@ -40,3 +40,11 @@
   font-size: 20px;
   font-weight: bold;
 }
+
+@media (max-width: 768px) { 
+
+  .library-page {
+    margin-bottom: 8rem;
+  }
+
+}

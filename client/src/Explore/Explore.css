@@ -49,3 +49,9 @@
 .back-btn:hover {
   color: aquamarine;
 }
+
+@media (max-width: 768px) {
+  .podGallery {
+    margin-bottom: 9rem;
+  }
+}
