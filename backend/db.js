@@ -2,8 +2,9 @@ const express = require('express')
 const mysql = require('mysql')
 //const handleDisconnection() = require('./mysqlconnection')
 
+const SERVER_IP = '16.162.28.154'
 let db = mysql.createConnection({
-    host: '18.162.46.87',
+    host: SERVER_IP,
     port: '3306',
     user: 'root',
     password: 'example',
@@ -12,7 +13,7 @@ let db = mysql.createConnection({
 
 function handleDisconnect() {
     db = mysql.createConnection({
-        host: '18.162.46.87',
+        host: SERVER_IP,
         port: '3306',
         user: 'root',
         password: 'example',

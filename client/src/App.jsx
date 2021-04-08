@@ -106,8 +106,9 @@ function App() {
   const responseGoogle = (response) => {
     axios({
       method: "POST",
-      url: "http://localhost:5000/api/googlelogin",
-      data: {tokenId: response.tokenId}
+      url: "http://16.162.28.154:5000/api/googlelogin",
+      data: {tokenId: response.tokenId, 
+            time: new Date().getTime()}
     }).then(res => {
       setUserName(res.data.userName)
       setUserEmail(res.data.userEmail)
@@ -187,10 +188,10 @@ function App() {
             <GoogleLogin
             className="loginBtn"
             clientId="81834534286-ksipb13ampj692eia95sqaed3r67jeje.apps.googleusercontent.com" // Secret
-            buttonText="Signin with google"
+            buttonText="Signin@Google"
             onSuccess={responseGoogle}
-            onFailure={responseGoogle}
-            cookiePolicy={"single_host_origin"}
+            onFailure={()=>{console.log("fail")}}
+            cookiePolicy={"none"}
           />
         }
 

@@ -78,3 +78,20 @@
 .view {
   background-color: #0069E4;
 }
+
+@media (max-width: 768px) {
+
+  .core-playing-panel{
+    flex-direction: column;
+    margin-bottom: 8rem;
+  }
+
+  .pp-left {
+    max-width: 100%;
+  }
+
+  .pp-middle {
+    max-width: 100%;
+  }
+
+}

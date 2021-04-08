@@ -114,3 +114,43 @@
   color: white !important;
 }
 
+
+/* Mobile  */
+@media (max-width: 768px) {
+  .App-header{
+    height: 4rem;
+  }
+
+  .logoTxt{
+    font-size: 2.5rem;
+    margin-left: 0.5rem;
+  }
+
+  .welcome-user{
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    margin-right: 0rem;
+  }
+
+  .navigator-card {
+    font-size: 3vh;
+    margin: 0.8rem;
+  }
+  .loginBtn {
+    max-height: 3rem;
+    margin: 0.2rem;
+    max-width: 2rem;
+  }
+
+  .playing-title {
+    bottom: 5.5rem; 
+    background-color: #2C293A;
+    max-width: 100%;
+    width: 100%;
+    padding: 10px;
+    left: 0px;
+
+  
+  }
+
+}

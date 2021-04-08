@@ -1,10 +1,8 @@
 .pod-info-page {
   display: flex;
   flex-direction: row;
-  /* align-items: center; */
   margin: 7rem;
   justify-content:space-around;
-  /* align-items: flex-start; */
 }
 
 .info-left-card {
@@ -70,4 +68,38 @@
 .info-left-sub:hover {
   background-color: gray;
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .pod-info-page {
+    flex-direction: column;
+    /* margin-top: 10px; 
+    margin-bottom: 10px; */
+    margin: 1rem;
+    margin-bottom: 8rem;
+  }
+
+  .info-left-card {
+    text-align: center;
+  }
+
+  .single-play-bar {
+    border: white;
+    border-width: 2px;
+    height: 40px;
+  }
+
+  .single-play-bar-title {
+    font-size: 15px;
+    font-weight: normal; 
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .info-left-sub {
+    padding: 10px; 
+    margin: 0px;
+  }
+
+
 }
