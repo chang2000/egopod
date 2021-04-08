@@ -39,17 +39,6 @@ function handleDisconnect() {
 }
 handleDisconnect();
 
-// db.connect((err) => {
-//     if (err) {
-//         throw (err)
-//         // connection.on('error', err => {
-//         //     console.log('Re-connecting lost connection: ');
-//         //     connection = mysql.createConnection(sqlConfig)
-//         // })
-//     }
-//     console.log("Connected")
-// })
-
 function sqlQuery(strSql, arr) {
     return new Promise(function (resolve, reject) {
         db.query(strSql, arr, (err, results) => {
