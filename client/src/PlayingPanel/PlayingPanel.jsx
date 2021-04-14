@@ -6,15 +6,14 @@ import {Editor, EditorState, convertToRaw, ContentState} from 'draft-js';
 import "draft-js/dist/Draft.css";
 import store from '../store'
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
   Link
 } from "react-router-dom";
+import NotesViewer from '../NotesViewer/NotesViewer';
+
 
 const PlayingPanel = () =>{
 
-
+  const [open, setOpen] = React.useState(false);
   const title = store.getState().coreStore[0]
   const audioUrl = store.getState().coreStore[1]
   const podID = store.getState().coreStore[2]
@@ -34,6 +33,8 @@ const PlayingPanel = () =>{
   const focusEditor = ()=> {
     editor.current.focus();
   }
+
+
 
   const saveText = ()=> {
     const blocks = convertToRaw(editorState.getCurrentContent()).blocks;
@@ -91,6 +92,15 @@ const PlayingPanel = () =>{
 
   }, [bookmarked])
 
+
+  const handleOpen = () => {
+    setOpen(!open);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const bmEpisode = () => {
     let query = `http://16.162.28.154:5000/api/bm/addbm?podcastID=${podID}&episodeID=${epID}&userEmail=${userEmail}`
     axios.get(query).then(res=>{
@@ -110,6 +120,7 @@ const PlayingPanel = () =>{
     window.localStorage.setItem("jump-from-library", "true")
     window.localStorage.setItem("podid-jump", podID);
   }
+
 
   return (
     <div className='core-playing-panel'>
@@ -167,9 +178,15 @@ const PlayingPanel = () =>{
         Save Note
       </div>
 
-      <div className='pp-right-btn view'>
+      <div className='pp-right-btn view' onClick={handleOpen}>
         View Note 
       </div>
+      {
+        open === true ? 
+        <NotesViewer className='notes-viewer'/> :
+        <div /> 
+      }
+
       </div>
     </div>
   )

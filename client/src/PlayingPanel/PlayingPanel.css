@@ -4,6 +4,7 @@
   flex-direction: row;
   justify-content: space-around;
   padding: 20px;
+  margin-bottom: 5rem;
 }
 
 .pp-left {
@@ -117,4 +118,9 @@
     max-width: 100%;
   }
 
+}
+
+.notes-viewer {
+  background-color: #505050;
+  /* display:  */
 }
