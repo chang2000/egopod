@@ -20,10 +20,7 @@ const Explore = () =>{
     let jumpState = window.localStorage.getItem("jump-from-library")
     if (jumpState == 'true') {
       window.localStorage.setItem("jump-from-library", "false")
-      console.log("YESSSSS")
-      // Fetch the podinfo
       let readID = window.localStorage.getItem("podid-jump")
-      // console.log(readID) 
       let itunesLink = `https://itunes.apple.com/lookup?id=${readID}&media=podcast&entity=podcastEpisode&timestamp=${new Date().getTime()}`
       axios.get(itunesLink).then(res=>{
         let url = res.data.results[0].artworkUrl600;
@@ -36,9 +33,8 @@ const Explore = () =>{
         setShowExplore(false)
       })
 
-    } else {
-      requestSearch('tech')
-    }
+    } 
+    requestSearch('tech')
 
 
   },[])
