@@ -1,8 +1,14 @@
 import "./Library.css"
+import "../index.css"
 import React, { useState, useEffect} from 'react'
 import axios from 'axios'
 import store from '../store'
-
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 const Library = (props) => {
   const [userEmail, setUserEmail] = useState('')
@@ -114,7 +120,6 @@ const Library = (props) => {
     console.log('clicked podid is', podID)
     window.localStorage.setItem("jump-from-library", "true")
     window.localStorage.setItem("podid-jump", podID);
-    window.location.href = 'http://www.egopod.xyz/explore'
   }
 
   const jumpToPlay = (podID, epID) => {
@@ -141,13 +146,15 @@ const Library = (props) => {
 
   const subPodBar = (podName, coverUrl, podID) => {
     return (
-      <div className='sub-pod-bar' 
-        onClick={()=>{jumpToPodInfo(podID)}}>
-        <img className='sub-pod-img'  src={coverUrl} alt=""/>
-        <div className='sub-pod-title'>
-          {podName}
+      <Link to="/explore" className='link-to'>
+        <div className='sub-pod-bar' 
+          onClick={()=>{jumpToPodInfo(podID)}}>
+          <img className='sub-pod-img'  src={coverUrl} alt=""/>
+          <div className='sub-pod-title'>
+            {podName}
+          </div>
         </div>
-      </div>
+      </Link>
     )
   }
 

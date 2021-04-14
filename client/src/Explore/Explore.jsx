@@ -18,7 +18,7 @@ const Explore = () =>{
   // eslint-disable-next-line react-hooks/exhaustive-deps
     // Check if it's jumped to here
     let jumpState = window.localStorage.getItem("jump-from-library")
-    if (jumpState == 'true') {
+    if (jumpState === 'true') {
       window.localStorage.setItem("jump-from-library", "false")
       let readID = window.localStorage.getItem("podid-jump")
       let itunesLink = `https://itunes.apple.com/lookup?id=${readID}&media=podcast&entity=podcastEpisode&timestamp=${new Date().getTime()}`
@@ -82,7 +82,7 @@ const Explore = () =>{
     } else {
       searchUrl = searchUrl + 'tech'
     }
-    console.log(searchUrl)
+    // console.log(searchUrl)
     axios.get(searchUrl).then((res)=>{
       let resCount = res.data.resultCount
       let tmpList = []

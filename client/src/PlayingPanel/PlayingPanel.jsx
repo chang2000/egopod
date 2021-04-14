@@ -5,6 +5,12 @@ import 'react-h5-audio-player/lib/styles.css'
 import {Editor, EditorState, convertToRaw, ContentState} from 'draft-js';
 import "draft-js/dist/Draft.css";
 import store from '../store'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 const PlayingPanel = () =>{
 
@@ -99,12 +105,21 @@ const PlayingPanel = () =>{
     })
   }
 
+  const jumpToPodInfo = () => {
+    console.log('clicked podid is', podID)
+    window.localStorage.setItem("jump-from-library", "true")
+    window.localStorage.setItem("podid-jump", podID);
+  }
+
   return (
     <div className='core-playing-panel'>
       <div className='pp-left'> 
+      <Link to="/explore">
         <img className='pp-left-img' 
+          onClick={jumpToPodInfo}
           alt=""
           src={coverUrl} />
+      </Link>
 
         <div className='pp-left-title'>{title}</div>
         <div className='pp-left-podname'>{podName}</div>
