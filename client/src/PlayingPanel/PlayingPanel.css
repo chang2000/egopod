@@ -51,15 +51,33 @@
 
 .pp-left-bookmark-btn {
   font-weight: bold;
-  background-color: #2C293A;
   padding: 10px;
   width: 180px;
 }
 
-.pp-left-bookmark-btn:hover {
+
+.bookmarked {
+  background-color: #2C293A;
+}
+
+.not_bookmarked {
+  background-color: #0069E4;
+}
+
+.bookmarked:hover {
   background-color: gray;
   cursor: pointer;
 }
+
+.not_bookmarked:hover {
+  opacity: 0.9;
+  cursor: pointer;
+}
+
+
+
+
+
 
 .pp-right-btn {
   padding: 10px;

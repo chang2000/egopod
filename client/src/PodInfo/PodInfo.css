@@ -25,9 +25,6 @@
   padding-bottom: 10px;
 }
 
-.info-left-sub {
-  padding-top: 10px;
-}
 
 
 .info-podlist {
@@ -59,13 +56,27 @@
 
 .info-left-sub {
   font-weight: bold;
-  background-color: #2C293A;
   padding: 10px;
-  width: 180px;
-  margin-left: -10px;
+  width: 100px;
+  /* margin-left: -10px; */
+  text-align: center;
+
 }
 
-.info-left-sub:hover {
+.not_sub {
+  background-color: #ec4348;
+}
+
+.subed {
+  background-color: #201E2C;
+}
+
+.not_sub:hover {
+  background-color: #f3585e;
+  cursor: pointer;
+}
+
+.subed:hover {
   background-color: gray;
   cursor: pointer;
 }

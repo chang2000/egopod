@@ -65,12 +65,12 @@
   background-color: black !important;
 }
 
-.welcome-user:hover .loggin-dropdown-menu {
-  display: block;
-  cursor: pointer;
-  animation-name: growDown;
-  animation-duration: 0.25s;
-  background-color: #2C293A;
+  .welcome-user:hover .loggin-dropdown-menu {
+    display: block;
+    cursor: pointer;
+    animation-name: growDown;
+    animation-duration: 0.25s;
+    background-color: #2C293A;
 }
 @keyframes growDown {
   0% {

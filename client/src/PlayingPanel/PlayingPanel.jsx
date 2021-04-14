@@ -112,12 +112,12 @@ const PlayingPanel = () =>{
 
         {
           bookmarked?
-          <div className='pp-left-bookmark-btn' onClick={unBmEpisode}>
-            UnBookmark this Episode
+          <div className='pp-left-bookmark-btn bookmarked' onClick={unBmEpisode}>
+            Bookmarked
           </div>
           :
-          <div className='pp-left-bookmark-btn' onClick={bmEpisode}>
-            Bookmark this Episode
+          <div className='pp-left-bookmark-btn not_bookmarked' onClick={bmEpisode}>
+            Bookmark
           </div>
         }
       </div>

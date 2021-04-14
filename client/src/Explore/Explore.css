@@ -14,10 +14,12 @@
   max-width: 300px;
   text-align: center;
 }
-
-.card:hover {
-  transform: scale(1.2);
-  transition-duration: 0.15s;
+@media (min-width: 768px) {
+  .card:hover {
+    transform: scale(1.2);
+    transition-duration: 0.15s;
+  }
+  
 }
 
 .outterCard {

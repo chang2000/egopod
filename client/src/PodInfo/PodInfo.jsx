@@ -133,16 +133,16 @@ const PodInfo = (props) =>{
 
         {
           subscribed === false ? 
-          <div className='info-left-sub noselect'
+          <div className='info-left-sub noselect not_sub'
             onClick={subscribePodcast}
           >
             Subscribe
           </div>
           : 
-          <div className='info-left-sub noselect'
+          <div className='info-left-sub noselect subed'
             onClick={unSubscribePodcast}
           >
-            UnSubscribe
+            Subscribed
           </div>
         }
       </div>
