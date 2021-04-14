@@ -3,6 +3,7 @@ import React, { useState, useEffect} from 'react'
 import axios from 'axios'
 import store from '../store'
 
+
 const Library = (props) => {
   const [userEmail, setUserEmail] = useState('')
   const [subList, setSubList] = useState([])
@@ -110,7 +111,10 @@ const Library = (props) => {
   
 
   const jumpToPodInfo = (podID) => {
-    console.log('clicked podid is', podID )
+    console.log('clicked podid is', podID)
+    window.localStorage.setItem("jump-from-library", "true")
+    window.localStorage.setItem("podid-jump", podID);
+    window.location.href = 'http://www.egopod.xyz/explore'
   }
 
   const jumpToPlay = (podID, epID) => {
