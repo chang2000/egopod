@@ -35,7 +35,10 @@ function handleDisconnect() {
             console.log('error when connecting to db:', err);
             setTimeout(handleDisconnect , 2000);
         }
-        console.log('mysql connected');
+        else{
+            console.log('mysql connected');
+        }
+        
     });
 }
 handleDisconnect();

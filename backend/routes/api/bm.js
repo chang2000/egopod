@@ -29,7 +29,8 @@ router.get('/queryAll', async (req, res) => {
     // let result_new = result.map((items)=>{
     //     return items["podcastID","episodeID"]
     // })
-    //console.log(JSON.stringify(result_new))
+    // console.log(JSON.stringify(result_new))
+    
     let reply = {userEmail: req.query.userEmail,subscribedIDs:result}
 
     res.status(200).send(reply)
