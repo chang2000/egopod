@@ -12,6 +12,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "ffmpeg": "^0.0.4",
     "google-auth-library": "^7.0.2",
     "moment": "^2.29.1",
     "mysql": "^2.18.1",
