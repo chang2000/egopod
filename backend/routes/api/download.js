@@ -8,10 +8,13 @@ const request = require('request')
 const ffmpeg = require('ffmpeg');
 
 router.get('/', async (req, res) => {
+
+    
     let Url = req.query.link
     let podcastID = req.query.podcastID
     let episodeID = req.query.episodeID
     let timeStamp = req.query.timeStamp
+    let userEmail = req.query.userEmail
     let startTime = ""
     let tS = timeStamp.split(":")
     console.log(Url)
@@ -52,6 +55,7 @@ router.get('/', async (req, res) => {
     }
     console.log(startTime)
 
+    delFile("public/" + userEmail + ".mp3")
     //let file = fs.createWriteStream(destDir + "/" + podcastID + episodeID + "test.mp3")
 
     await request.get(Url).on('error', (err) => {
@@ -66,13 +70,13 @@ router.get('/', async (req, res) => {
                     video
                         .setVideoStartTime(startTime)
                         .setVideoDuration(120)
-                        .save("public/test.mp3", (err, file => {
-                            if (!err){
+                        .save("public/" + userEmail + ".mp3", (err, file => {
+                            if (!err) {
                                 console.log('Video file: ' + file);
-                            }else{
+                            } else {
                                 console.log("process error")
                             }
-                                
+
                         }))
                 } else {
                     console.log('load audio fail Error: ' + err)
@@ -92,4 +96,24 @@ router.get('/', async (req, res) => {
 })
 
 
+function delFile(path, reservePath) {
+    if (fs.existsSync(path)) {
+        if (fs.statSync(path).isDirectory()) {
+            let files = fs.readdirSync(path);
+            files.forEach((file, index) => {
+                let currentPath = path + "/" + file;
+                if (fs.statSync(currentPath).isDirectory()) {
+                    delFile(currentPath, reservePath);
+                } else {
+                    fs.unlinkSync(currentPath);
+                }
+            });
+            if (path != reservePath) {
+                fs.rmdirSync(path);
+            }
+        } else {
+            fs.unlinkSync(path);
+        }
+    }
+}
 module.exports = router
