@@ -2,9 +2,26 @@
    margin-top: 2rem;
    height: 100%;
    display: flex;
-   flex-direction: row;
-   justify-content: space-around;
+   flex-direction: column;
+   justify-content:start;
    padding: 20px;
    margin-bottom: 5rem;
    background-color: #505050;
+
+
+}
+
+
+.notebar {
+   display: flex;
+   flex-direction: row;
+   justify-content:space-between;
+}
+
+.note_string_sub {
+   font-size: 14px;
+}
+
+.time_stamp {
+   font-size: 14px;
 }

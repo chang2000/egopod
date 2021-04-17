@@ -9,6 +9,7 @@
 
 .pp-left {
   max-width: 33%;
+  width: 33%;
 }
 
 .pp-left-img {
@@ -40,6 +41,7 @@
 
 .pp-middle {
   max-width: 33%;
+  width: 33%;
   background-color:#161616 ;
   padding: 10px;
 }

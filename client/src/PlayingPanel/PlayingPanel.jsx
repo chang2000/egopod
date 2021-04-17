@@ -34,14 +34,20 @@ const PlayingPanel = () =>{
     editor.current.focus();
   }
 
-
-
   const saveText = ()=> {
     const blocks = convertToRaw(editorState.getCurrentContent()).blocks;
-    const value = blocks.map(block => (!block.text.trim() && '\n') || block.text).join('\n');
-    console.log(value)
+    const noteString = blocks.map(block => (!block.text.trim() && '\n') || block.text).join('\n');
     let timeStamp = document.getElementById('rhap_current-time').innerHTML
     console.log(timeStamp)
+    console.log(noteString)
+    // API Call
+    let apiString = `http://16.162.28.154:5000/api/note/addts?userEmail=${userEmail}&podcastID=${podID}&episodeID=${epID}&timeStamp=${timeStamp}&noteString=${noteString}`
+    axios.get(apiString)
+    // .then((res)=>{
+    //   console.log(res)
+    // })
+  
+
     setEditorState(()=>EditorState.createEmpty())
   }
 
@@ -183,7 +189,11 @@ const PlayingPanel = () =>{
       </div>
       {
         open === true ? 
-        <NotesViewer className='notes-viewer'/> :
+        <NotesViewer className='notes-viewer'
+        userEmail={userEmail}
+        episodeID={epID}
+        podcastID={podID}
+        /> :
         <div /> 
       }
 
