@@ -7,7 +7,7 @@ const sqlQuery = require('../../db')
 router.get('/addts', async (req, res) => {
     //console.log(req.query)
     let sqlStr = "insert into note (useremail,podcastID,episodeID,timestamp,noteString) values (?,?,?,?,?);"
-    let arr = [req.query.userEmail, req.query.podcastID, req.query.episodeID, req.query.timeStamp,req.query.noteString]
+    let arr = [req.query.userEmail, req.query.podcastID, req.query.episodeID, req.query.timeStamp, req.query.noteString]
     let result = await sqlQuery(sqlStr, arr)
     console.log(result)
     res.status(200).send()
@@ -15,7 +15,7 @@ router.get('/addts', async (req, res) => {
 
 router.get('/delts', async (req, res) => {
     console.log(req.query)
-    let sqlStr = "delete from note where useremail= '"+ req.query.userEmail +"'"
+    let sqlStr = "delete from note where useremail= '" + req.query.userEmail + "'"
     if (req.query.podcastID != undefined) {
         sqlStr = sqlStr + "AND podcastID = '" + req.query.podcastID + "'"
     }

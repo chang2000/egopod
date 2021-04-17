@@ -28,5 +28,8 @@ app.use('/api/bm',require('./routes/api/bm'))
 //user add note timestamp
 app.use('/api/note',require('./routes/api/note'))
 
+//user download audio
+app.use('/api/download',require('./routes/api/download'))
+
 const PORT = process.env.PORT || 5000
 app.listen(PORT, ()=>console.log(`Serevr started on PORT ${PORT}`))
