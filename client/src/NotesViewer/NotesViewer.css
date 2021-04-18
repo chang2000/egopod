@@ -25,3 +25,9 @@
 .time_stamp {
    font-size: 14px;
 }
+
+@media (max-width: 768px) {
+   .btn-grp {
+      display: none;
+   }
+ }

@@ -116,13 +116,15 @@ const NotesViewer = (props) =>{
         <div className='time_stamp'>
           {timeStamp}
         </div>
-        <button onClick={()=>{
-          downloadNotes(timeStamp, noteString, oriString)
-        }}>Download</button>
+        <div className='btn-grp'>
+          <button onClick={()=>{
+            downloadNotes(timeStamp, noteString, oriString)
+          }}>Download</button>
 
-        <button onClick={() => {
-          deleteNotes(timeStamp)
-        }}>Trash</button>
+          <button onClick={() => {
+            deleteNotes(timeStamp)
+          }}>Trash</button>
+        </div>
 
       </div>
     )
