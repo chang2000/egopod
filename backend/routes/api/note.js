@@ -20,10 +20,10 @@ router.get('/delts', async (req, res) => {
         sqlStr = sqlStr + "AND podcastID = '" + req.query.podcastID + "'"
     }
     if (req.query.episodeID != undefined) {
-        sqlStr = sqlStr + "AND podcastID = '" + req.query.episodeID + "'"
+        sqlStr = sqlStr + "AND episodeID = '" + req.query.episodeID + "'"
     }
     if (req.query.timestamp != undefined) {
-        sqlStr = sqlStr + "AND podcastID = '" + req.query.timeStamp + "'"
+        sqlStr = sqlStr + "AND timeStamp = '" + req.query.timestamp + "'"
     }
     sqlStr = sqlStr + ';'
     console.log(sqlStr)

@@ -24,3 +24,7 @@ yarn-error.log*
 
 .vscode
 .idea
+
+backend/public/*.mp3
+
+
