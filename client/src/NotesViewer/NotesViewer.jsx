@@ -8,13 +8,14 @@ const NotesViewer = (props) =>{
   const userEmail = props.userEmail 
   const episodeID = props.episodeID 
   const podcastID = props.podcastID
+  const audioUrl = props.audioUrl
   const [noteList, setNoteList] = useState([])
   const [elementList, setElementList] = useState([])
   useEffect(()=>{
     // Query for all the notes
     let apiString = `http://16.162.28.154:5000/api/note/queryAll?userEmail=${userEmail}`
     let tmpList = []
-    console.log("ep id is", episodeID)
+    // console.log("ep id is", episodeID)
     axios.get(apiString).then((res)=>{
       // console.log(res.data.Note)
       
@@ -25,8 +26,7 @@ const NotesViewer = (props) =>{
           tmpList.push(res.data.Note[i])
         }
       }
-      console.log(tmpList)
-      
+      // console.log(tmpList)
       setNoteList(tmpList)
     })
   }, [])
@@ -39,8 +39,48 @@ const NotesViewer = (props) =>{
   },[elementList])
 
 
-  const downloadNotes = () =>{
 
+
+  const downloadFileHelper = (fileName, content) => {
+    const aTag = document.createElement('a');
+    const blob = new Blob([content]);
+  
+    aTag.download = fileName;
+    aTag.style = "display: none";
+    aTag.href = URL.createObjectURL(blob);
+    document.body.appendChild(aTag);
+    aTag.click();
+  
+    setTimeout(function () {
+      document.body.removeChild(aTag);
+      window.URL.revokeObjectURL(blob);
+    }, 100);
+  }
+
+  const audioDownloadFileHelper = (fileName, userEmail) => {
+    const aTag = document.createElement('a');
+    const link = `http://16.162.28.154:5000/${userEmail}.mp3`
+    aTag.href = link
+    aTag.download = fileName
+    aTag.style = "display: none"
+    aTag.target = "_blank"
+    document.body.appendChild(aTag)
+    aTag.click()
+  
+    setTimeout(function () {
+      document.body.removeChild(aTag)
+    }, 100)
+  }
+
+  const downloadNotes = (timeStamp, noteString,filename) =>{
+    let query = `http://16.162.28.154:5000/api/download?link=${audioUrl}&userEmail=${userEmail}&timeStamp=${timeStamp}`
+    axios.get(query).then((res)=>{
+      console.log(res.data)
+      if (res.data === 'success') {
+        audioDownloadFileHelper('audio.mp3', userEmail)
+        downloadFileHelper(`${filename}.txt`, noteString)
+      }
+    })
 
   }
 
@@ -59,16 +99,14 @@ const NotesViewer = (props) =>{
             tmpList.push(res.data.Note[i])
           }
         }
-        console.log(tmpList)
-        
         setNoteList(tmpList)
       }) 
     })
   }
 
   const noteBar = (noteString, timeStamp) => {
-    let string = noteString.substr(0, 10)
-    string += '...'
+    let oriString = noteString.substr(0, 10)
+    let string = oriString + '...'
     return (
       <div className="notebar">
         <div className="note_string_sub">
@@ -79,7 +117,7 @@ const NotesViewer = (props) =>{
           {timeStamp}
         </div>
         <button onClick={()=>{
-          downloadNotes(timeStamp)
+          downloadNotes(timeStamp, noteString, oriString)
         }}>Download</button>
 
         <button onClick={() => {

@@ -70,6 +70,7 @@ router.get('/', async (req, res) => {
                         .save("public/" + userEmail + ".mp3", (err, file => {
                             if (!err) {
                                 console.log('Video file: ' + file);
+                                res.status(200).send("success")
                             } else {
                                 console.log("process error")
                             }
@@ -84,7 +85,6 @@ router.get('/', async (req, res) => {
             console.log(e.msg)
         }
         console.log("finished")
-        res.status(200).send("success")
     })
 
 })

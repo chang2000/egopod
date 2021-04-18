@@ -43,11 +43,6 @@ const PlayingPanel = () =>{
     // API Call
     let apiString = `http://16.162.28.154:5000/api/note/addts?userEmail=${userEmail}&podcastID=${podID}&episodeID=${epID}&timeStamp=${timeStamp}&noteString=${noteString}`
     axios.get(apiString)
-    // .then((res)=>{
-    //   console.log(res)
-    // })
-  
-
     setEditorState(()=>EditorState.createEmpty())
   }
 
@@ -193,6 +188,7 @@ const PlayingPanel = () =>{
         userEmail={userEmail}
         episodeID={epID}
         podcastID={podID}
+        audioUrl={audioUrl}
         /> :
         <div /> 
       }
