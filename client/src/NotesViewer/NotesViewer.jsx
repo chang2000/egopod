@@ -21,12 +21,14 @@ const NotesViewer = (props) =>{
       
       let len = res.data.Note.length
       console.log(len)
+      console.log('current episode ID is ', episodeID)
       for (let i = 0; i < len; i++) {
-        if (res.data.Note[i].episodeID === episodeID) {
+        if (res.data.Note[i].episodeID === episodeID.toString()) {
           tmpList.push(res.data.Note[i])
         }
       }
-      // console.log(tmpList)
+      console.log(tmpList)
+
       setNoteList(tmpList)
     })
   }, [])
@@ -37,9 +39,6 @@ const NotesViewer = (props) =>{
 
   useEffect(()=>{
   },[elementList])
-
-
-
 
   const downloadFileHelper = (fileName, content) => {
     const aTag = document.createElement('a');
@@ -60,19 +59,20 @@ const NotesViewer = (props) =>{
   const audioDownloadFileHelper = (fileName, userEmail) => {
     const aTag = document.createElement('a');
     const link = `http://16.162.28.154:5000/${userEmail}.mp3`
+    console.log('enter audio download helper')
     aTag.href = link
-    aTag.download = fileName
+    // aTag.download = fileName
     aTag.style = "display: none"
     aTag.target = "_blank"
     document.body.appendChild(aTag)
     aTag.click()
-  
     setTimeout(function () {
       document.body.removeChild(aTag)
     }, 100)
   }
 
   const downloadNotes = (timeStamp, noteString,filename) =>{
+    console.log(timeStamp)
     let query = `http://16.162.28.154:5000/api/download?link=${audioUrl}&userEmail=${userEmail}&timeStamp=${timeStamp}`
     axios.get(query).then((res)=>{
       console.log(res.data)
@@ -95,7 +95,7 @@ const NotesViewer = (props) =>{
         let len = res.data.Note.length
         console.log(len)
         for (let i = 0; i < len; i++) {
-          if (res.data.Note[i].episodeID === episodeID) {
+          if (res.data.Note[i].episodeID === episodeID.toString()) {
             tmpList.push(res.data.Note[i])
           }
         }

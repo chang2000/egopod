@@ -26,5 +26,6 @@ yarn-error.log*
 .idea
 
 backend/public/*.mp3
+client/build
 
 

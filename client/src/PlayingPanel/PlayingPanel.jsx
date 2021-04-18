@@ -38,8 +38,11 @@ const PlayingPanel = () =>{
     const blocks = convertToRaw(editorState.getCurrentContent()).blocks;
     const noteString = blocks.map(block => (!block.text.trim() && '\n') || block.text).join('\n');
     let timeStamp = document.getElementById('rhap_current-time').innerHTML
+    if (timeStamp.length === 5) {
+      timeStamp = '0:' + timeStamp
+    }
     console.log(timeStamp)
-    console.log(noteString)
+    // console.log(noteString)
     // API Call
     let apiString = `http://16.162.28.154:5000/api/note/addts?userEmail=${userEmail}&podcastID=${podID}&episodeID=${epID}&timeStamp=${timeStamp}&noteString=${noteString}`
     axios.get(apiString)
