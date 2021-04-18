@@ -8,8 +8,6 @@ const request = require('request')
 const ffmpeg = require('ffmpeg');
 
 router.get('/', async (req, res) => {
-
-    
     let Url = req.query.link
     let podcastID = req.query.podcastID
     let episodeID = req.query.episodeID
@@ -28,8 +26,7 @@ router.get('/', async (req, res) => {
         if (tS[0] >= 1) {
             tS[0] -= 1
             tS[1] += 59
-        }
-        else {
+        } else {
             tS[0] = 0
             tS[1] = 0
             tS[2] = 0
@@ -86,12 +83,9 @@ router.get('/', async (req, res) => {
             console.log(e.code)
             console.log(e.msg)
         }
-        res.status(200).send()
+        console.log("finished")
+        res.status(200).send("success")
     })
-
-
-
-
 
 })
 
