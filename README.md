@@ -17,7 +17,7 @@ The client(frontend) is developed by [React](https://reactjs.org/), and the back
 
 The whole project is currently deployed on an AWS EC2 instance. The client, backend and database are all running on [Docker](https://www.docker.com/). 
 
-Here are the detailed instruction on setting up EgoPod.
+Here are the detailed instructions on setting up EgoPod.
 
 ### Prepared
 
