@@ -9,6 +9,7 @@ import GoogleLogin from 'react-google-login'
 import AudioPlayer from 'react-h5-audio-player'
 import 'react-h5-audio-player/lib/styles.css'
 import store from './store'
+import apiAddress from './config'
 // For the switching animation effect
 
 import {
@@ -106,7 +107,7 @@ function App() {
   const responseGoogle = (response) => {
     axios({
       method: "POST",
-      url: "http://16.162.28.154:5000/api/googlelogin",
+      url: `${apiAddress}/api/googlelogin`,
       data: {tokenId: response.tokenId, 
             time: new Date().getTime()}
     }).then(res => {

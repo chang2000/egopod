@@ -9,6 +9,7 @@ import {
   Link
 } from "react-router-dom";
 import NotesViewer from '../NotesViewer/NotesViewer';
+import apiAddress from '../config'
 
 
 const PlayingPanel = () =>{
@@ -44,7 +45,7 @@ const PlayingPanel = () =>{
     console.log(timeStamp)
     // console.log(noteString)
     // API Call
-    let apiString = `http://16.162.28.154:5000/api/note/addts?userEmail=${userEmail}&podcastID=${podID}&episodeID=${epID}&timeStamp=${timeStamp}&noteString=${noteString}`
+    let apiString = `${apiAddress}/api/note/addts?userEmail=${userEmail}&podcastID=${podID}&episodeID=${epID}&timeStamp=${timeStamp}&noteString=${noteString}`
     axios.get(apiString)
     setEditorState(()=>EditorState.createEmpty())
   }
@@ -70,7 +71,7 @@ const PlayingPanel = () =>{
     })
 
     // Check if the current episode is bookmarked
-    let bmQuery = `http://16.162.28.154:5000/api/bm/queryAll?userEmail=${userEmail}`
+    let bmQuery = `${apiAddress}/api/bm/queryAll?userEmail=${userEmail}`
     // console.log("MY ID IS", epID)
     axios.get(bmQuery).then(res=>{
       let epList = res.data.subscribedIDs
@@ -106,14 +107,14 @@ const PlayingPanel = () =>{
   };
 
   const bmEpisode = () => {
-    let query = `http://16.162.28.154:5000/api/bm/addbm?podcastID=${podID}&episodeID=${epID}&userEmail=${userEmail}`
+    let query = `${apiAddress}/api/bm/addbm?podcastID=${podID}&episodeID=${epID}&userEmail=${userEmail}`
     axios.get(query).then(res=>{
       setBookmarked(true)
     })
   }
 
   const unBmEpisode = () => { 
-    let query = `http://16.162.28.154:5000/api/bm/unbm?podcastID=${podID}&episodeID=${epID}&userEmail=${userEmail}`
+    let query = `${apiAddress}/api/bm/unbm?podcastID=${podID}&episodeID=${epID}&userEmail=${userEmail}`
     axios.get(query).then(res=>{
       setBookmarked(false)
     })

@@ -9,6 +9,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import apiAddress from '../config'
 
 const Library = (props) => {
   const [userEmail, setUserEmail] = useState('')
@@ -56,7 +57,7 @@ const Library = (props) => {
     if (email !== '') {
       // fetchAllSubs
       // MAGIC !!!!! ASYNC HANDLING
-      let query = `http://16.162.28.154:5000/api/sub/queryAll?userEmail=${email}`
+      let query = `${apiAddress}/api/sub/queryAll?userEmail=${email}`
       axios.get(query).then(res=>{
         let idList = res.data.subscribedIDs
         let promises = [];
@@ -74,7 +75,7 @@ const Library = (props) => {
       })
 
       // fetch the bookmark info
-      query = `http://16.162.28.154:5000/api/bm/queryAll?userEmail=${email}`
+      query = `${apiAddress}/api/bm/queryAll?userEmail=${email}`
       axios.get(query).then(res=>{
         console.log(res.data.subscribedIDs)
         let list = res.data.subscribedIDs

@@ -1,20 +1,17 @@
 # EgoPod, a web-based podcast app supports note taking
 
-
-
 ## Introduction
 
-EgoPod is a full-functional podcast app. Egopod supports *Sign in with Google*. Users can search podcast, subscribe podcast and bookmark episodes. 
-
+[EgoPod](http://www.egopod.xyz) is a full-functional podcast app. Egopod supports *Sign in with Google*. Users can search podcast, subscribe podcast and bookmark episodes. 
 
 
 Egopod also supports note taking to help people write down the knowledge or inspiration from podcast. After taking the notes, users can export the notes and related audio clip with ease.
 
-## Setup
+## Setup & Architecture
 
-This project is consisted of two parts: `clients` and `backend`
+This project is consisted of two parts: `clients` and `backend`.
 
-The client(frontend) is developed by [React](https://reactjs.org/), and the backend(apis) is developed by [Express](https://expressjs.com/). Database is (MySQL)[https://www.mysql.com/].
+The client(frontend) is developed by [React](https://reactjs.org/), and the backend(apis) is developed by [Express](https://expressjs.com/). Database is [MySQL][https://www.mysql.com/].
 
 The whole project is currently deployed on an AWS EC2 instance. The client, backend and database are all running on [Docker](https://www.docker.com/). 
 
@@ -36,6 +33,8 @@ Please figure out the local absloute path of this project.
 4. Use `yarn start`  to start the dev mode.
 5. Now you can checkout the front-end part of EgoPod. It's fully functional with basic podcast searching and playing, but it cannot deal with any user account related operations before configuring backend.
 
+> The default API host is www.egopod.xyz, which is deployed by us. You can enjoy the **FULL FUNCTIONALITY** of egopod without configuring backend if you **keep the `config.js` unchanged**.
+
 
 
 ### Backend
@@ -51,12 +50,9 @@ Please figure out the local absloute path of this project.
 
 ### Database
 
-Database for this project is developed on this [image](https://hub.docker.com/_/mysql).
-
-Build up all the tables here.
+Database for this project is developed on this [image](https://hub.docker.com/_/mysql). 
 
 Following commands are used to set up database tables. 
-
 
 1.`CREATE DATABASE egopod;`
 

@@ -1,13 +1,13 @@
 const express = require('express')
 const mysql = require('mysql')
-//const handleDisconnection() = require('./mysqlconnection')
-
+const loginInfo = require('./config')
+console.log(loginInfo)
 const SERVER_IP = '16.162.28.154'
 let db = mysql.createConnection({
     host: SERVER_IP,
     port: '3306',
-    user: 'root',
-    password: 'example',
+    user: loginInfo.userName,
+    password: loginInfo.password,
     database: 'egopod'
 })
 
