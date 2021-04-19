@@ -54,3 +54,14 @@ Please figure out the local absloute path of this project.
 Database for this project is developed on this [image](https://hub.docker.com/_/mysql).
 
 Build up all the tables here.
+
+Following command are used to set up database tables. 
+1.'CREATE DATABASE egopod;'
+2.'USE egopod;
+3.'CREATE TABLE 'userinfo' ('useremail' varchar(50), 'username' varchar(20),PRIMARY KEY ('useremail'));'
+4.'CREATE TABLE 'bookmark' ('useremail' varchar(50), 'podcastID' varchar(50), 'episodeID' varchar(50));'
+5.'CREATE TABLE 'subscription' ('useremail' varchar(50), 'podcastID' varchar(50));'
+6.'CREATE TABLE 'note' ('useremail' varchar(50), 'podcastID' varchar(50), 'episodeID' varchar(50), 'timeStamp' varchar(50), 'noteString'	varchar(200));'
+
+
+
