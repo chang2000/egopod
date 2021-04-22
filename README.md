@@ -7,15 +7,17 @@
 
 Egopod also supports note taking to help people write down the knowledge or inspiration from podcast. After taking the notes, users can export the notes and related audio clip with ease.
 
+![](https://i.imgur.com/WK6PFKk.png)
+
 ## Setup & Architecture
 
 This project is consisted of two parts: `clients` and `backend`.
 
-The client(frontend) is developed by [React](https://reactjs.org/), and the backend(apis) is developed by [Express](https://expressjs.com/). Database is [MySQL][https://www.mysql.com/].
+The client(frontend) is developed by [React](https://reactjs.org/), and the backend(apis) is developed by [Express](https://expressjs.com/). Database is [MySQL](https://www.mysql.com/).
 
 The whole project is currently deployed on an AWS EC2 instance. The client, backend and database are all running on [Docker](https://www.docker.com/). 
 
-Here are the detailed instruction on setting up EgoPod.
+Here are the detailed instructions on setting up EgoPod.
 
 ### Prepared
 
