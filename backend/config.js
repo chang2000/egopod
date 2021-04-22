@@ -1,7 +1,7 @@
 /*Please modify the information below*/
 const loginInfo = {
-    userName: "root",
-    password: "your_password_here"
+    userName: "db_username_here",
+    password: "db_password_here"
 }
 
 module.exports = loginInfo

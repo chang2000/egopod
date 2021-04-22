@@ -15,8 +15,8 @@ function handleDisconnect() {
     db = mysql.createConnection({
         host: SERVER_IP,
         port: '3306',
-        user: 'root',
-        password: 'example',
+        user: loginInfo.userName,
+        password: loginInfo.password,
         database: 'egopod'
     })
     db.on('error', function(err) {

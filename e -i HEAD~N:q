@@ -1,0 +1,460 @@
+[33mcommit b52ab6513c07da66bbb066fcf06072a062f5caed[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Thu Apr 22 06:31:23 2021 +0000
+
+    Update security
+
+[33mcommit 4ded7f1ea8915ecc4700d574645ae80b2ec82e79[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Mon Apr 19 13:19:47 2021 +0000
+
+    Important information extraction, ready to set public
+
+[33mcommit e58bbcb029eb229177e6abef0dcc287810215134[m
+Author: MRTater <47377639+MRTater@users.noreply.github.com>
+Date:   Mon Apr 19 20:50:20 2021 +0800
+
+    Update README.md
+
+[33mcommit 4d539d8720069ebd38bbd5da3de029429bc8fe51[m
+Author: MRTater <47377639+MRTater@users.noreply.github.com>
+Date:   Mon Apr 19 20:49:52 2021 +0800
+
+    Update README.md
+
+[33mcommit c03ec7263f6cbe0d7dc73ec5e8ad633bf0e876c1[m
+Author: MRTater <47377639+MRTater@users.noreply.github.com>
+Date:   Mon Apr 19 20:46:02 2021 +0800
+
+    Update README.md
+    
+    add database command
+
+[33mcommit 58b1de4e6fdc0800a14f763b73e53d03d42f4788[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Sun Apr 18 18:00:39 2021 +0800
+
+    Add basic setup information in readme
+
+[33mcommit c84ae7a49746be38fbe34e8720070175d79b2dc6[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Sun Apr 18 09:40:59 2021 +0000
+
+    fix style
+
+[33mcommit 6023ccd9320b01dcc98d28eed79e01cd55ca5572[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Sun Apr 18 09:19:20 2021 +0000
+
+    fix time format error
+
+[33mcommit c2dc7d55f9e464930f202bf9bd3a1f2ce35195fb[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Sun Apr 18 08:53:54 2021 +0000
+
+    Finish all note download feature
+
+[33mcommit 86a5fbb0d6f349ef54b804ff491f8560d3cbdcee[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Sun Apr 18 08:10:53 2021 +0000
+
+    update delete notes function
+
+[33mcommit 90151f62f35802288b72da6a11338deee90deb34[m
+Author: 1155124470 <925955711@qq.com>
+Date:   Sun Apr 18 12:02:27 2021 +0800
+
+    download
+
+[33mcommit 7057ed777854dcb3dea8908f010dfa180d9018ee[m
+Author: 1155124470 <925955711@qq.com>
+Date:   Sat Apr 17 22:33:07 2021 +0800
+
+    download function finished
+
+[33mcommit 2f01ec3f136075bbd8a68c3261607616a5ed5641[m
+Author: 1155124470 <925955711@qq.com>
+Date:   Sat Apr 17 22:15:20 2021 +0800
+
+    download
+
+[33mcommit 75462e767be72f8e351ba4f980dde457bae69edd[m
+Author: 1155124470 <925955711@qq.com>
+Date:   Sat Apr 17 16:53:08 2021 +0800
+
+    download
+
+[33mcommit e98a5b1696407ede1b1d4486fffa7a210f9f6603[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Sat Apr 17 04:30:45 2021 +0000
+
+    add note list view
+
+[33mcommit 6a765ce08ed78d26014c432decda682767541be1[m
+Author: 1155124470 <925955711@qq.com>
+Date:   Sat Apr 17 11:22:02 2021 +0800
+
+    noteString
+
+[33mcommit 1d81b57dc472daa8bb3fdb84c697b8b991c022a2[m
+Author: 1155124470 <925955711@qq.com>
+Date:   Sat Apr 17 01:33:38 2021 +0800
+
+    add note
+
+[33mcommit f2b4054637746707e6e3b37861c36427014d6728[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Wed Apr 14 03:48:07 2021 +0000
+
+    add view notes code
+
+[33mcommit 12444343fd4f853cd9fdd03ed5ab7463edb810e3[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Wed Apr 14 02:55:36 2021 +0000
+
+    use Link to implement page jump, without disturbing the playing status
+
+[33mcommit d5480c6b7d137efb267a2c08c8099bbbd40a257c[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Wed Apr 14 02:35:01 2021 +0000
+
+    fix the problem of blank go back
+
+[33mcommit 4edee5a82832cf1285545d369d7dc368794a114d[m
+Author: Ubuntu <ubuntu@ip-172-31-18-235.ap-east-1.compute.internal>
+Date:   Wed Apr 14 02:32:18 2021 +0000
+
+    jump from library to explore page
+
+[33mcommit 49b678e54c22333a12ff8513045eb92a6a1736d8[m
+Author: Ubuntu <ubuntu@ip-172-31-18-235.ap-east-1.compute.internal>
+Date:   Wed Apr 14 01:58:08 2021 +0000
+
+    modify the button style
+
+[33mcommit 1df10017d7a4783dc6d46e85a1e975ca7c9a5472[m
+Merge: 78a756f 72b012d
+Author: 1155124470 <1155124470@link.cuhk.edu.hk>
+Date:   Thu Apr 8 23:22:48 2021 +0800
+
+    Merge branch 'master' of https://github.com/chang2000/egopod
+
+[33mcommit 78a756f7e6b8abb896e7b73a19c20605b08de3d9[m
+Author: 1155124470 <1155124470@link.cuhk.edu.hk>
+Date:   Thu Apr 8 23:22:02 2021 +0800
+
+    no change
+
+[33mcommit 72b012dbf7cfc55dd7b4268d625eccfc6163390e[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Tue Apr 6 15:09:40 2021 +0800
+
+    change logo
+
+[33mcommit 37b86d40c3af8a92046452061ed5d0c47a505965[m
+Author: Ubuntu <ubuntu@ip-172-31-18-235.ap-east-1.compute.internal>
+Date:   Tue Apr 6 06:52:19 2021 +0000
+
+    add mobile optimization code
+
+[33mcommit d2dc2d24a11ebbada9468f094ec66847ad7a90db[m
+Author: Ubuntu <ubuntu@ip-172-31-18-235.ap-east-1.compute.internal>
+Date:   Tue Apr 6 04:15:31 2021 +0000
+
+    modify server address
+
+[33mcommit a3edf55f68bfe971c99c38dfb23c3940a24d461b[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Tue Apr 6 11:52:04 2021 +0800
+
+    modify server ip
+
+[33mcommit 2b2d7c47803be280c37833c6bc50a805f1e49256[m
+Merge: de9d1f9 d849e3c
+Author: 1155124470 <1155124470@link.cuhk.edu.hk>
+Date:   Sun Apr 4 23:49:13 2021 +0800
+
+    Merge branch 'master' of https://github.com/chang2000/egopod
+
+[33mcommit d849e3ca95fc82b6beacc2dfffecba5eb962b84e[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Sun Apr 4 20:24:39 2021 +0800
+
+    fix bookmark logic
+
+[33mcommit c699c4ed046e492884ef57dac4abe60029466a9a[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Sun Apr 4 20:02:31 2021 +0800
+
+    grasp current playing time & clean input field after saving
+
+[33mcommit 47e17426f01900ed63b974984c8facf87438753a[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Sun Apr 4 19:50:06 2021 +0800
+
+    fix singinwithgoogle text
+
+[33mcommit f41dcb14169674e23e2165e5fc1389bcacfae38a[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Sun Apr 4 19:44:35 2021 +0800
+
+    fix tostring
+
+[33mcommit 283ddd745d84c49df32d3efe43fdd418ebcf8931[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Sun Apr 4 19:35:21 2021 +0800
+
+    add jump from library to playing panel
+
+[33mcommit cd7a6afbcdb1280f805feb86132491d5dba999d2[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Sun Apr 4 19:18:32 2021 +0800
+
+    bookmark view done
+
+[33mcommit 0fc7c330ec1c767647819da672d8efb223ce2757[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Sun Apr 4 19:01:23 2021 +0800
+
+    add/delete bookmark
+
+[33mcommit d6f46031e7390cdce5b1c0e99fc592b1125afee0[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Sun Apr 4 18:29:28 2021 +0800
+
+    Subscription page view done
+
+[33mcommit 93f8e06c5fc7013e2600ebe383a82e32c88f1e2f[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Sun Apr 4 18:17:21 2021 +0800
+
+    add subscription related
+
+[33mcommit de9d1f99643c57c93661613cf550d8dea97fb3f5[m
+Author: 1155124470 <1155124470@link.cuhk.edu.hk>
+Date:   Sun Apr 4 17:09:32 2021 +0800
+
+    Update db.js
+
+[33mcommit 41e44e352e738ec01f10122ffd08c05d4adcaf17[m
+Author: 1155124470 <1155124470@link.cuhk.edu.hk>
+Date:   Sun Apr 4 17:01:56 2021 +0800
+
+    mysql timeout bug fixed
+
+[33mcommit d2f0f77c5a45fa0e12a7f0883a0a080cd812aafd[m
+Author: 1155124470 <1155124470@link.cuhk.edu.hk>
+Date:   Sun Apr 4 16:19:30 2021 +0800
+
+    remove unnecessary code
+
+[33mcommit ddc521074f232f8008a639d8798aa1619d81d832[m
+Merge: 5ab9edf 4638800
+Author: 1155124470 <1155124470@link.cuhk.edu.hk>
+Date:   Sun Apr 4 15:35:59 2021 +0800
+
+    Merge branch 'master' of https://github.com/chang2000/egopod
+
+[33mcommit 5ab9edf3d75e87539a584cb4eaea67d2334f96e6[m
+Author: 1155124470 <1155124470@link.cuhk.edu.hk>
+Date:   Sun Apr 4 15:35:06 2021 +0800
+
+    add sub,bookmark
+
+[33mcommit 46388003b643e1f0c29b78ae7d41e8ba6bd63083[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Sun Apr 4 14:37:44 2021 +0800
+
+    remove warning message
+
+[33mcommit 13cdac67cda841152ea43d4efccfef784e32d326[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Sun Apr 4 14:21:41 2021 +0800
+
+    fix cors problem; optimize the search performace
+
+[33mcommit 97e6a935c904f3da989c792c6450874a49ee1e55[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Sun Apr 4 13:11:00 2021 +0800
+
+    Styling
+
+[33mcommit ffeae01c955584c6b36905607f33b7f8e2178c47[m
+Author: 1155124470 <1155124470@link.cuhk.edu.hk>
+Date:   Sat Apr 3 20:37:08 2021 +0800
+
+    update
+
+[33mcommit b444523b2d9173fcdd822986656da7b84dc89fab[m
+Author: 1155124470 <1155124470@link.cuhk.edu.hk>
+Date:   Sat Apr 3 20:36:40 2021 +0800
+
+    update“
+
+[33mcommit ebbdfe7f01b37a506408a8e018fb965b6bcaeded[m
+Author: 1155124470 <1155124470@link.cuhk.edu.hk>
+Date:   Sat Apr 3 14:18:53 2021 +0800
+
+    database operaction initial design finished
+
+[33mcommit 315202793e0de6c27a0c68f3cd8fce6039d2eac4[m
+Author: 1155124470 <1155124470@link.cuhk.edu.hk>
+Date:   Fri Apr 2 21:24:45 2021 +0800
+
+    delete useless
+
+[33mcommit e7d4b63c14cd9100149766051a32d09c339d34c5[m
+Author: 1155124470 <1155124470@link.cuhk.edu.hk>
+Date:   Fri Apr 2 01:16:26 2021 +0800
+
+    fix port problem
+
+[33mcommit bc0b2fef039028f0ba6248983f64a09b6c2b9ec4[m
+Author: 1155124470 <1155124470@link.cuhk.edu.hk>
+Date:   Thu Apr 1 20:16:30 2021 +0800
+
+    database modified
+
+[33mcommit 6b18a22b94652090902858779428562b8bceffe2[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Thu Apr 1 18:05:25 2021 +0800
+
+    minor style change
+
+[33mcommit 537c7f0e14dd7956cb1dc5ea6969d5e33159d687[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Wed Mar 24 19:20:55 2021 +0800
+
+    add edge case checking
+
+[33mcommit d457c8c5b3498e4523d74ae67383a475f1826784[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Wed Mar 24 11:27:54 2021 +0800
+
+    add draft.js component
+
+[33mcommit 537ba2fdbbe48eb9f931693fd5c35097802d6dbb[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Wed Mar 24 10:19:39 2021 +0800
+
+    add the most basic layout for the playing panel
+
+[33mcommit 73ebfabfe28e4fac46e6c3a326bd36c025c117cd[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Wed Mar 24 10:05:36 2021 +0800
+
+    fix the scroll bar
+
+[33mcommit a95ec489f9af8ebd1a51a1b44be80db22365207b[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Tue Mar 23 17:40:54 2021 +0800
+
+    add default value
+
+[33mcommit 6e060909f66fca444892ffda79ed641c028a3fb7[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Tue Mar 23 17:36:33 2021 +0800
+
+    add test
+
+[33mcommit 402afa4e976d77df2f5356ce7df0b9d6e58083cf[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Tue Mar 23 17:25:46 2021 +0800
+
+    add search function
+
+[33mcommit 06b7b8b6e12ee5d49021d4251dcc187ec4615ed2[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Tue Mar 23 14:22:26 2021 +0800
+
+    now can play select audio, with the list view
+
+[33mcommit 2d4c88a646af21af5ffe3a3acbd0b71c641c4285[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Tue Mar 23 12:54:25 2021 +0800
+
+    basic playlist for one podcast
+
+[33mcommit 779bf6c3deb241e336bfcfeb4ccfeeabb650158a[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Mon Mar 22 21:54:56 2021 +0800
+
+    set playing title as react state
+
+[33mcommit db43ebd1590127e58fc5e741a4f7083d6c089d8d[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Mon Mar 22 21:46:25 2021 +0800
+
+    add download function
+
+[33mcommit b3d46b0e4d649f4d491fcc2005e7300efe672038[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Mon Mar 22 20:22:49 2021 +0800
+
+    add logout animation
+
+[33mcommit 33ca786e2f7cfdd4f2a78d317a4296cce5c3aa67[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Mon Mar 22 17:45:12 2021 +0800
+
+    add player
+
+[33mcommit d09e068135b3010438586abf2a9fe8498c416328[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Mon Mar 22 17:08:14 2021 +0800
+
+    add logout button
+
+[33mcommit a8dd6ff0381ff0a1fd48a141e24f1b64423ae8e8[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Sat Mar 20 14:53:59 2021 +0800
+
+    css is hard
+
+[33mcommit 0d9e07dca72b3cb96de5e614df8baa0ddf18bc75[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Sat Mar 20 14:28:49 2021 +0800
+
+    add readme
+
+[33mcommit 834bd439d1fb8d7315dfd4522d28f7cd55b781f5[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Sat Mar 20 14:27:52 2021 +0800
+
+    add explore basic file
+
+[33mcommit 9f9b70dc2cf85b1e4dd0e1ca8c8fa01e277a5f5c[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Fri Mar 19 12:33:53 2021 +0800
+
+    update some signs problem
+
+[33mcommit c0b5158c9b33a826436deb294a58d4c5f489d00e[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Thu Mar 18 22:00:36 2021 +0800
+
+    setup the cookie related stuff
+
+[33mcommit 4752fc5f53c1ec2577bd6427888c20cabc7b5786[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Thu Mar 18 11:49:01 2021 +0800
+
+    basic login logic and tab logic
+
+[33mcommit e189917c82f0697ea3e05b84317e30a096c8c674[m
+Author: WANG Tianchang Alex <wangtcalex@gmail.com>
+Date:   Wed Mar 17 09:53:34 2021 +0800
+
+    Finish tab bar
+
+[33mcommit f05982be13c5c3b800de5d59ef9ae79bd35d7925[m
+Author: Ubuntu <ubuntu@ip-172-31-34-2.ap-east-1.compute.internal>
+Date:   Thu Mar 11 02:22:48 2021 +0000
+
+    add cors
+
+[33mcommit 229880ea97e00d76eb45c24f00927585ab95bb02[m
+Author: Alex WANG <alex@Alexs-MacBook-Pro.local>
+Date:   Wed Mar 10 15:42:48 2021 +0800
+
+    update
