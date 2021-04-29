@@ -1,6 +1,8 @@
 import './PodInfo.css'
 import '../index.css'
 import React, { useState, useEffect} from 'react'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios'
 import store from '../store'
 import apiAddress from '../config'
@@ -103,10 +105,14 @@ const PodInfo = (props) =>{
   }
 
   const subscribePodcast = () => {
-    let query = `${apiAddress}/api/sub/addsub?podcastID=${podID}&userEmail=${userEmail}`
-    axios.get(query).then(res=>{
-      setSubscribed(true)
-    })
+    if (userEmail === '') {
+      toast("Please Signin")
+    } else {
+      let query = `${apiAddress}/api/sub/addsub?podcastID=${podID}&userEmail=${userEmail}`
+      axios.get(query).then(res=>{
+        setSubscribed(true)
+      })
+    }
   }
 
   const unSubscribePodcast = () => {
@@ -153,6 +159,7 @@ const PodInfo = (props) =>{
         <div key={key}>{item}</div>)
       )}
       </div>
+      <ToastContainer />
     </div>
     
   )

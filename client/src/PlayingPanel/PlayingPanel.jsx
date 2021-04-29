@@ -8,6 +8,9 @@ import store from '../store'
 import {
   Link
 } from "react-router-dom";
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import NotesViewer from '../NotesViewer/NotesViewer';
 import apiAddress from '../config'
 
@@ -107,10 +110,15 @@ const PlayingPanel = () =>{
   };
 
   const bmEpisode = () => {
-    let query = `${apiAddress}/api/bm/addbm?podcastID=${podID}&episodeID=${epID}&userEmail=${userEmail}`
-    axios.get(query).then(res=>{
-      setBookmarked(true)
-    })
+    console.log(userEmail)
+    if (userEmail === '') {
+      toast("Please Signin")
+    } else {
+      let query = `${apiAddress}/api/bm/addbm?podcastID=${podID}&episodeID=${epID}&userEmail=${userEmail}`
+      axios.get(query).then(res=>{
+        setBookmarked(true)
+      })
+    }
   }
 
   const unBmEpisode = () => { 
@@ -198,6 +206,7 @@ const PlayingPanel = () =>{
       }
 
       </div>
+      <ToastContainer />
     </div>
   )
 }
