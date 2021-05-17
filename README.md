@@ -1,5 +1,8 @@
 # EgoPod, a web-based podcast app supports note taking
 
+> Since the grading for this course project is finished, **we suspended the AWS server**. We will bring it online afterwards.
+> If you'd like to try EgoPod, please deploy it on your local machine according to our detailed deployment guidence.
+
 ## Introduction
 
 [EgoPod](http://www.egopod.xyz) is a full-functional podcast app. Egopod supports *Sign in with Google*. Users can search podcast, subscribe podcast and bookmark episodes. 
@@ -19,7 +22,7 @@ The whole project is currently deployed on an AWS EC2 instance. The client, back
 
 Here are the detailed instructions on setting up EgoPod.
 
-### Prepared
+### Preparation
 
 - Docker
 - Sign-in-with-Google API Key
