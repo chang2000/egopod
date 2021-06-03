@@ -1,7 +1,10 @@
 # EgoPod, a web-based podcast app supports note taking
 
 > Since the grading for this course project is finished, **we suspended the AWS server**. We will bring it online afterwards.
+> 
 > If you'd like to try EgoPod, please deploy it on your local machine according to our detailed deployment guidence.
+> 
+> And we're happy that EgoPod get a grade A in the CSCI4140: Open-source Software Project Development.
 
 ## Introduction
 
@@ -38,7 +41,7 @@ Please figure out the local absloute path of this project.
 4. Use `yarn start`  to start the dev mode.
 5. Now you can checkout the front-end part of EgoPod. It's fully functional with basic podcast searching and playing, but it cannot deal with any user account related operations before configuring backend.
 
-> The default API host is www.egopod.xyz, which is deployed by us. You can enjoy the **FULL FUNCTIONALITY** of egopod without configuring backend if you **keep the `config.js` unchanged**.
+> The default API host is www.egopod.xyz:5000, which is deployed by us. You can enjoy the **FULL FUNCTIONALITY** of egopod without configuring backend if you **keep the `config.js` unchanged**.
 
 
 
