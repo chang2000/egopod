@@ -4,7 +4,7 @@
 > 
 > If you'd like to try EgoPod, please deploy it on your local machine according to our detailed deployment guidence.
 > 
-> And we're happy that EgoPod get a grade A in the CSCI4140: Open-source Software Project Development.
+> And we're happy that EgoPod gets a grade A in the CSCI4140: Open-source Software Project Development.
 
 ## Introduction
 
