@@ -27,5 +27,6 @@ yarn-error.log*
 
 backend/public/*.mp3
 client/build
+client/yarn.lock
 
 
