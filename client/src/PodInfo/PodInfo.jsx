@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios'
 import store from '../store'
-import apiAddress from '../config'
+import clientAuthInfo from '../config'
 
 const PodInfo = (props) =>{
   const podCoverUrl = props.coverUrl
@@ -39,9 +39,8 @@ const PodInfo = (props) =>{
       setEpIDs(tmpIDs)
     })
     // Check wether this podcast is subscribed
-    console.log('userEmail is', userEmail)
     if (userEmail !== '') {
-      let query = `${apiAddress}/api/sub/queryAll?userEmail=${userEmail}`
+      let query = `${clientAuthInfo.apiAddress}/api/sub/queryAll?userEmail=${userEmail}`
       axios.get(query).then((res)=>{
         let subList = res.data.subscribedIDs
         let found = subList.indexOf(podID.toString())
@@ -108,7 +107,7 @@ const PodInfo = (props) =>{
     if (userEmail === '') {
       toast("Please Signin")
     } else {
-      let query = `${apiAddress}/api/sub/addsub?podcastID=${podID}&userEmail=${userEmail}`
+      let query = `${clientAuthInfo.apiAddress}/api/sub/addsub?podcastID=${podID}&userEmail=${userEmail}`
       axios.get(query).then(res=>{
         setSubscribed(true)
       })
@@ -116,7 +115,7 @@ const PodInfo = (props) =>{
   }
 
   const unSubscribePodcast = () => {
-    let query = `${apiAddress}/api/sub/unsub?podcastID=${podID}&userEmail=${userEmail}`
+    let query = `${clientAuthInfo.apiAddress}/api/sub/unsub?podcastID=${podID}&userEmail=${userEmail}`
     axios.get(query).then(res=>{
     setSubscribed(false)
     })

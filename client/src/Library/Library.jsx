@@ -9,7 +9,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import apiAddress from '../config'
+import clientAuthInfo from '../config'
 
 const Library = (props) => {
   const [userEmail, setUserEmail] = useState('')
@@ -57,7 +57,7 @@ const Library = (props) => {
     if (email !== '') {
       // fetchAllSubs
       // MAGIC !!!!! ASYNC HANDLING
-      let query = `${apiAddress}/api/sub/queryAll?userEmail=${email}`
+      let query = `${clientAuthInfo.apiAddress}/api/sub/queryAll?userEmail=${email}`
       axios.get(query).then(res=>{
         let idList = res.data.subscribedIDs
         let promises = [];
@@ -75,7 +75,7 @@ const Library = (props) => {
       })
 
       // fetch the bookmark info
-      query = `${apiAddress}/api/bm/queryAll?userEmail=${email}`
+      query = `${clientAuthInfo.apiAddress}/api/bm/queryAll?userEmail=${email}`
       axios.get(query).then(res=>{
         console.log(res.data.subscribedIDs)
         let list = res.data.subscribedIDs

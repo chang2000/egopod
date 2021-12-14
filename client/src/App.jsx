@@ -9,7 +9,7 @@ import GoogleLogin from 'react-google-login'
 import AudioPlayer from 'react-h5-audio-player'
 import 'react-h5-audio-player/lib/styles.css'
 import store from './store'
-import apiAddress from './config'
+import clientAuthInfo from './config'
 // For the switching animation effect
 
 import {
@@ -107,7 +107,7 @@ function App() {
   const responseGoogle = (response) => {
     axios({
       method: "POST",
-      url: `${apiAddress}/api/googlelogin`,
+      url: `${clientAuthInfo.apiAddress}/api/googlelogin`,
       data: {tokenId: response.tokenId, 
             time: new Date().getTime()}
     }).then(res => {
@@ -187,9 +187,9 @@ function App() {
 
           :
             <GoogleLogin
-            className="loginBtn"
-            clientId="81834534286-ksipb13ampj692eia95sqaed3r67jeje.apps.googleusercontent.com" // Secret
-            buttonText="Signin@Google"
+            className ="loginBtn"
+            clientId = {clientAuthInfo.googleAPIKey} // Secret
+            buttonText = "Signin@Google"
             onSuccess={responseGoogle}
             onFailure={()=>{console.log("fail")}}
             cookiePolicy={"none"}

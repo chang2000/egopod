@@ -7,6 +7,10 @@
     display: flex;
     flex-direction: row; 
     justify-content: space-between;
+
+    /* Always on top */
+    position: fixed;
+    z-index: 999;
 }
 
 .logoTxt {
@@ -17,7 +21,6 @@
 }
 
 .loginBtn {
-    display: inline;
     max-height: 3rem;
     margin-right: 3rem; 
     margin-top: 1.5rem;
@@ -39,8 +42,6 @@
     margin: 1rem;
     cursor: pointer;
 }
-
-
 
 
 .sticky {

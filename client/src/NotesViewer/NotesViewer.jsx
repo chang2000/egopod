@@ -2,7 +2,7 @@ import './NotesViewer.css'
 import React, { useState, useEffect} from 'react'
 import axios from 'axios'
 import { set } from 'draft-js/lib/DefaultDraftBlockRenderMap'
-import apiAddress from '../config'
+import clientAuthInfo from '../config'
 
 const NotesViewer = (props) =>{
   const userEmail = props.userEmail 
@@ -13,7 +13,7 @@ const NotesViewer = (props) =>{
   const [elementList, setElementList] = useState([])
   useEffect(()=>{
     // Query for all the notes
-    let apiString = `${apiAddress}/api/note/queryAll?userEmail=${userEmail}`
+    let apiString = `${clientAuthInfo.apiAddress}/api/note/queryAll?userEmail=${userEmail}`
     let tmpList = []
     // console.log("ep id is", episodeID)
     axios.get(apiString).then((res)=>{
@@ -58,7 +58,7 @@ const NotesViewer = (props) =>{
 
   const audioDownloadFileHelper = (fileName, userEmail) => {
     const aTag = document.createElement('a');
-    const link = `${apiAddress}/${userEmail}.mp3`
+    const link = `${clientAuthInfo.apiAddress}/${userEmail}.mp3`
     console.log('enter audio download helper')
     aTag.href = link
     // aTag.download = fileName
@@ -73,7 +73,7 @@ const NotesViewer = (props) =>{
 
   const downloadNotes = (timeStamp, noteString,filename) =>{
     console.log(timeStamp)
-    let query = `${apiAddress}/api/download?link=${audioUrl}&userEmail=${userEmail}&timeStamp=${timeStamp}`
+    let query = `${clientAuthInfo.apiAddress}/api/download?link=${audioUrl}&userEmail=${userEmail}&timeStamp=${timeStamp}`
     axios.get(query).then((res)=>{
       console.log(res.data)
       if (res.data === 'success') {
@@ -87,9 +87,9 @@ const NotesViewer = (props) =>{
 
   const deleteNotes = (ts) => {
     console.log("Delete notes")
-    let query = `${apiAddress}/api/note/delts?userEmail=${userEmail}&podcastID=${podcastID}&episodeID=${episodeID}&timestamp=${ts}`
+    let query = `${clientAuthInfo.apiAddress}/api/note/delts?userEmail=${userEmail}&podcastID=${podcastID}&episodeID=${episodeID}&timestamp=${ts}`
     axios.get(query).then(()=>{
-      let apiString = `${apiAddress}/api/note/queryAll?userEmail=${userEmail}`
+      let apiString = `${clientAuthInfo.apiAddress}/api/note/queryAll?userEmail=${userEmail}`
       let tmpList = []
       axios.get(apiString).then((res)=>{
         let len = res.data.Note.length

@@ -12,7 +12,7 @@ import {
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import NotesViewer from '../NotesViewer/NotesViewer';
-import apiAddress from '../config'
+import clientAuthInfo from '../config'
 
 
 const PlayingPanel = () =>{
@@ -48,7 +48,7 @@ const PlayingPanel = () =>{
     console.log(timeStamp)
     // console.log(noteString)
     // API Call
-    let apiString = `${apiAddress}/api/note/addts?userEmail=${userEmail}&podcastID=${podID}&episodeID=${epID}&timeStamp=${timeStamp}&noteString=${noteString}`
+    let apiString = `${clientAuthInfo.apiAddress}/api/note/addts?userEmail=${userEmail}&podcastID=${podID}&episodeID=${epID}&timeStamp=${timeStamp}&noteString=${noteString}`
     axios.get(apiString)
     setEditorState(()=>EditorState.createEmpty())
   }
@@ -74,7 +74,7 @@ const PlayingPanel = () =>{
     })
 
     // Check if the current episode is bookmarked
-    let bmQuery = `${apiAddress}/api/bm/queryAll?userEmail=${userEmail}`
+    let bmQuery = `${clientAuthInfo.apiAddress}/api/bm/queryAll?userEmail=${userEmail}`
     // console.log("MY ID IS", epID)
     axios.get(bmQuery).then(res=>{
       let epList = res.data.subscribedIDs
@@ -114,7 +114,7 @@ const PlayingPanel = () =>{
     if (userEmail === '') {
       toast("Please Signin")
     } else {
-      let query = `${apiAddress}/api/bm/addbm?podcastID=${podID}&episodeID=${epID}&userEmail=${userEmail}`
+      let query = `${clientAuthInfo.apiAddress}/api/bm/addbm?podcastID=${podID}&episodeID=${epID}&userEmail=${userEmail}`
       axios.get(query).then(res=>{
         setBookmarked(true)
       })
@@ -122,7 +122,7 @@ const PlayingPanel = () =>{
   }
 
   const unBmEpisode = () => { 
-    let query = `${apiAddress}/api/bm/unbm?podcastID=${podID}&episodeID=${epID}&userEmail=${userEmail}`
+    let query = `${clientAuthInfo.apiAddress}/api/bm/unbm?podcastID=${podID}&episodeID=${epID}&userEmail=${userEmail}`
     axios.get(query).then(res=>{
       setBookmarked(false)
     })

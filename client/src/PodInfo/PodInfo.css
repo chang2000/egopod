@@ -39,6 +39,9 @@
   flex-direction: row;
   justify-content: space-between;
   cursor: pointer;
+  border-radius: 1rem;
+  margin: 10px;
+  /* background-color: aqua; */
 }
 
 .single-play-bar:hover {
@@ -48,6 +51,9 @@
 .single-play-bar-title {
   font-size: 18px;
   font-weight: bold;
+
+  /* line-height should be the same with the height of player-bar */
+  line-height: 40px; 
 }
 
 .single-play-bar-start-play {
