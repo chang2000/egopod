@@ -2,11 +2,12 @@ const express = require('express')
 const router = express.Router()
 const sqlQuery = require('../../db')
 const { OAuth2Client, UserRefreshClient } = require('google-auth-library')
+const loginInfo = require('../../config')
 
 
-
-const clientID = "81834534286-ksipb13ampj692eia95sqaed3r67jeje.apps.googleusercontent.com" // Secret
+const clientID = loginInfo.signin_with_google_key
 const client = new OAuth2Client(clientID)
+console.log(clientID)
 router.post("/", (req, res) => {
     const { tokenId } = req.body
     client.verifyIdToken({ idToken: tokenId, audience: clientID })

@@ -2,7 +2,7 @@ const express = require('express')
 const mysql = require('mysql')
 const loginInfo = require('./config')
 console.log(loginInfo)
-const SERVER_IP = '16.162.28.154'
+const SERVER_IP = loginInfo.server_ip 
 let db = mysql.createConnection({
     host: SERVER_IP,
     port: '3306',

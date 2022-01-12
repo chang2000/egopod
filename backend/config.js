@@ -1,7 +1,8 @@
-/*Please modify the information below*/
 const loginInfo = {
-    userName: "db_username_here",
-    password: "db_password_here"
+    userName: "",
+    password: "",
+    server_ip: "",
+    signin_with_google_key: ""
 }
 
 module.exports = loginInfo
